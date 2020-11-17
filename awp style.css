@@ -1,0 +1,359 @@
+﻿@charset "UTF-8";
+
+@font-face {
+    font-family: Bahnschrift;
+    src: url(fonts/bahnschrift);
+}
+
+body {
+    font-family: Bahnschrift;
+    font-size: 16px;
+    background: #5fb56a;
+    margin: 0 auto;
+    padding: 0;
+    color: #000;
+}
+
+.custom-h2 {
+    padding-top: 5px;
+    margin: 0px;
+}
+
+.custom-p {
+    padding-top: 5px;
+    padding-bottom: 8px;
+    margin: 0px;
+}
+
+.custom-p2 {
+    text-align: left;
+    padding: 0px;
+    margin: 0px;
+}
+
+.errortext {
+    color: red;
+    padding-left: 5px;
+}
+
+label {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.labelstyle {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.removepm {
+    padding: 0px;
+    margin: 0px;
+}
+
+input {
+    margin-top: 4px;
+    min-height: 28px;
+}
+
+.space {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.space3 {
+    margin-right: 1px;
+}
+
+.space3Var {
+    margin-right: 2px;
+}
+
+.space2 {
+    padding-top: 11px;
+    padding-bottom: 11px;
+}
+
+.MDbutton {
+    font-family: Bahnschrift;
+    margin: 0 auto;
+    padding: 0;
+    font-weight: bold;
+    font-size: 16px;
+    color: blue;
+    background-color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.infolabel {
+    margin-left: 700px;
+}
+
+.page {
+    max-width: 60%;
+    width: auto;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 100%;
+}
+
+.yläosa {
+    max-width: 100% auto;
+    margin: 0 auto;
+    height: 50px;
+}
+
+.banner {
+    text-align: center;
+    font-size: 100%;
+    background-color: rgb(178, 220, 182);
+    padding: 0px 0;
+}
+
+.väli1 {
+    height: 10px;
+}
+
+.mainpage {
+    background-color: #fff;
+    padding: 20px 50px;
+    font-size: 85%;
+    height: auto;
+}
+
+.clearline {
+    width: 100%;
+    padding-bottom: 50px;
+    background-color: white;
+}
+
+.searchbox {
+    border: 3.5px solid #5fb56a;
+    margin-bottom: 5px;
+    min-height: 37px;
+    min-width: 150px;
+    margin-top: 4px;
+}
+
+.searchboxVar2 {
+    border: 3.5px solid #5fb56a;
+    margin-bottom: 5px;
+    min-height: 37px;
+    min-width: 50px;
+    margin-top: 4px;
+}
+
+.searchboxVar {
+    border: 3.5px solid #5fb56a;
+    margin-bottom: 5px;
+    min-height: 37px;
+    min-width: 80px;
+    margin-top: 4px;
+}
+
+.listOfResults {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .listOfResults li a {
+        border: 1px solid rgb(178, 220, 182);
+        margin-top: -1px;
+        background-color: white;
+        padding: 12px;
+        text-decoration: none;
+        color: black;
+        display: block;
+    }
+
+.h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.margintop {
+margin-top: 5px;
+}
+
+.searchbutton {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    min-width: 20%;
+    max-width: 50%;
+    border: 3.5px solid #5fb56a;
+    margin: 30px 0 10px 0;
+    background-color: rgb(178, 220, 182);
+    padding: 10px;
+}
+
+    .searchbutton:hover {
+        background-color: white;
+    }
+
+    .searchbutton a {
+        color: black;
+        text-decoration: none;
+    }
+
+.returnbox {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    min-width: 20%;
+    max-width: 50%;
+    border: 3.5px solid #5fb56a;
+    margin: 245px 0 10px 0;
+    background-color: rgb(178, 220, 182);
+    padding: 10px;
+}
+
+    .returnbox a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .returnbox:hover {
+        background-color: white;
+    }
+
+.returnbox2 {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    min-width: 20%;
+    max-width: 50%;
+    border: 3.5px solid #5fb56a;
+    margin: 30px 0 10px 0;
+    background-color: rgb(178, 220, 182);
+    padding: 10px;
+}
+
+    .returnbox2:hover {
+        background-color: white;
+    }
+
+.returnbox3 {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    min-width: 20%;
+    max-width: 50%;
+    border: 3.5px solid #5fb56a;
+    margin: 215px 0 10px 0;
+    background-color: rgb(178, 220, 182);
+    padding: 10px;
+}
+
+    .returnbox3 a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .returnbox3:hover {
+        background-color: white;
+    }
+
+.boxtext {
+    padding-left: 5px;
+    padding-bottom: 7px;
+}
+
+.väli2 {
+    height: 10px;
+}
+
+.searchresults {
+    padding-top: 10px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdownbutton {
+    font-family: Bahnschrift;
+    padding: 16px;
+    background-color: rgb(178, 220, 182);
+    color: black;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    display: inline-block;
+    width: 100%;
+}
+
+    .dropdownbutton:hover {
+        background-color: #5fb56a;
+        width: 100%;
+    }
+
+.banner:hover {
+    background-color: #5fb56a;
+    width: 100%;
+}
+
+.dropdown-content {
+    padding-top: 5px;
+    display: none;
+    position: absolute;
+    background-color: rgb(178, 220, 182);
+    z-index: 1;
+    width: 100%;
+}
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 0;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+        .dropdown-content a:hover {
+            color: black;
+            text-decoration: none;
+            display: block;
+            background-color: #5fb56a;
+        }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.mapframe {
+    position: relative;
+    padding-bottom: 50%;
+    height: 0;
+    overflow: hidden;
+}
+
+    .mapframe iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+.footer {
+    font-size: 60%;
+    text-align: right;
+    padding: 10px 15px;
+    background-color: rgb(178, 220, 182);
+}
+
