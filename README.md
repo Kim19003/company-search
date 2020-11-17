@@ -1,6 +1,5 @@
 # company-search
 Finnish Company Search Web App
-
 [Perfection of my school project: https://github.com/Kim19003/nettisivut-app]
 
 
