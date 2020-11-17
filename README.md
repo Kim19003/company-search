@@ -1,3 +1,7 @@
 # company-search
-finnish company search web app
-[perfection of the nettisivut-app: https://github.com/Kim19003/nettisivut-app]
+Finnish Company Search Web App
+[Perfection of my school project: https://github.com/Kim19003/nettisivut-app]
+
+Planned upcoming changes:
+- Box for the More details -button
+- Highlighted company information on the More details -page
