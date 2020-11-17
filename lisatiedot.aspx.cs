@@ -14,6 +14,8 @@ namespace nettisivut_app
         public int viisikymmenta = 50;
     protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
             StringWriter writer2 = new StringWriter();
             WebRequest myRequest2 = WebRequest.Create((string)Session["haettuDetails"]);
             WebResponse response2 = myRequest2.GetResponse();
@@ -123,15 +125,20 @@ namespace nettisivut_app
                 haettuWS = haettuWS.Replace("\"", "");
                 Session["haettuWS"] = haettuWS;
             }
-            //Session["haettuWS"] = haettuWSMinus;
+                //Session["haettuWS"] = haettuWSMinus;
 
-            /* int qwe = 0;
-            for (int asdasd = 0; asdasd < companyData2.Length; asdasd++)
+                /* int qwe = 0;
+                for (int asdasd = 0; asdasd < companyData2.Length; asdasd++)
+                {
+                    Response.Write(companyData2[qwe]);
+                    qwe++;
+                } */
+            }
+            catch (Exception err)
             {
-                Response.Write(companyData2[qwe]);
-                qwe++;
-            } */
-
+                // Error[005]
+                Response.Redirect("hauntulokset.aspx");
+            }
         }
     }
 }

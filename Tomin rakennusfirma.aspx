@@ -9,7 +9,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>agilewebproject</title>
+  <title>Company search</title>
   <link href="awp%20style.css" rel="stylesheet" type="text/css" />
 </head>
 

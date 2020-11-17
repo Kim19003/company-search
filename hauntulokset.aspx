@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>agilewebproject</title>
+  <title>Company search</title>
   <link href="awp%20style.css" rel="stylesheet" type="text/css"/>
 </head>
 
@@ -31,7 +31,7 @@
     </div>
     <div class="mainpage">
     <h2>
-        SEARCH RESULTS:
+        SEARCH QUERIES:
 		</h2>
 		<div class="searchresults">
 		<p class="labelstyle removepm">
@@ -45,8 +45,12 @@
             <asp:Label ID="Label4" runat="server" Text="" BackColor="#B2DCB6"></asp:Label><br />
             <asp:Label ID="Label10" runat="server" Text="The company's form is:  "></asp:Label>
             <asp:Label ID="Label5" runat="server" Text="" BackColor="#B2DCB6"></asp:Label>
+            </p>
             <br />
-            <br />
+                <h2>
+        SEARCH RESULTS:
+		</h2>
+            <p class="labelstyle removepm">
             <asp:Label ID="Label11" runat="server" Text="Unnamed Company" Font-Bold="True" Font-Size="Large"></asp:Label><br />
             <asp:Label ID="Label12" runat="server" Text="Registered: "></asp:Label>
             <asp:Label ID="Label13" runat="server" Text="(Registered)" BackColor="#B2DCB6"></asp:Label><br />
@@ -64,8 +68,10 @@
     border: none;
     outline: none;
     cursor: pointer;" />
+                            </p>
             <br />
             <br />
+            <p class="labelstyle removepm">
             <asp:Label ID="Label19" runat="server" Text=""></asp:Label>
             <asp:Label ID="Label20" runat="server" Text="" BackColor="#B2DCB6"></asp:Label><br />
             </p>

@@ -9,7 +9,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>agilewebproject</title>
+  <title>Company search</title>
   <link href="awp%20style.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -35,7 +35,7 @@
 
         <h2>COMPANY DETAILS</h2>
         <h2 class="custom-h2"><%Response.Write((string)Session["haettuNimi"]); %></h2>
-        <p>Business ID: <%Response.Write((string)Session["haettuBI"]); %><br>
+        <p class="labelstyle removepm" style="margin-top:10px">Business ID: <%Response.Write((string)Session["haettuBI"]); %><br>
         Registration time: <%Response.Write((string)Session["haettuRD"]); %><br>
         Company form: <%Response.Write((string)Session["haettuForm"]); %><br>
         Address: <%Response.Write((string)Session["haettuStreet"] + ", " + (string)Session["haettuCity"]); %><br>

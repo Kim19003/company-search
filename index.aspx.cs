@@ -15,6 +15,16 @@ namespace nettisivut_app
         public int viisikymmenta = 50;
         protected void Page_Load(object sender, EventArgs e)
         {
+            ////////////////////////////////////////////////////////////////////////
+            // Error[001]: Only integers allowed as for some search box values
+            // Error[002]: Error in checking the null string values
+            // Error[003]: Error in the searching function
+            // Error[004]: Error in the integer checking function (related to 001)
+            // Error[005]: Error in the more details function
+            // Error[006]: Search can't be done by only using the Company form box.
+            // Error[007]: Error in the Company form value checking function (related to 006)
+            ////////////////////////////////////////////////////////////////////////
+
             Session.Timeout = 60;
             // Session["BusinessSector"] = "Pirkanmaan Pienkoti"; //kokeilukoodi valmiilla inputilla
             Session["BusinessSector"] = businessSectorBox.Text; //business sector variable on yrityksen nimi nykyään
@@ -44,54 +54,17 @@ namespace nettisivut_app
             Session["haettuCountry"] = "";
             Session["haettuPhone"] = "";
             Session["haettuWS"] = "";
+            Session["OneBoxSearch"] = false;
 
-
-            //hakuohjelma
-            /* StringWriter writer = new StringWriter();
-            WebRequest myRequest = WebRequest.Create(@"https://avoindata.prh.fi/tr/v1?totalResults=false&maxResults=1000&companyRegistrationFrom=2020-01-01&companyRegistrationTo=2020-12-31");
-            WebResponse response = myRequest.GetResponse();
-            Stream dataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(dataStream);
-            string responseFromFile = reader.ReadToEnd();
-            Session["responseFromFile"] = responseFromFile; */
-
-            // Session["haettuNimi"] = responseFromFile; //testaa että ohjelma lukee koko sivun
-
-            /* string[] words = responseFromFile.Split('}');
-            int i = 0;
-            while (!words[i].Contains((string)Session["BusinessSector"]) && i < words.Length) //laskee monta kertaa tietty hakusana on löytynyt
-            {
-                i++;
-            }
-            string[] companyData = words[i].Split(','); //tiedon noutaminen + sanojen splittaus
-
-            //1 on business id, 2 on name jne...
-
-            //name
-            string haettuNimiRaw = companyData[2];
-            string haettuNimi = haettuNimiRaw.Substring(8);
-            string haettuNimiMinus = haettuNimi.Remove(haettuNimi.Length - 1);
-            //registry date
-            string haettuRDRaw = companyData[3];
-            string haettuRD = haettuRDRaw.Substring(20);
-            string haettuRDMinus = haettuRD.Remove(haettuRD.Length - 1);
-            //business id
-            string haettuBIRaw = companyData[1];
-            string haettuBI = haettuBIRaw.Substring(15);
-            string haettuBIMinus = haettuBI.Remove(haettuBI.Length - 1);
-            //company form
-            string haettuFormRaw = companyData[4];
-            string haettuForm = haettuFormRaw.Substring(15);
-            string haettuFormMinus = haettuForm.Remove(haettuForm.Length - 1);
-
-            Session["haettuNimi"] = haettuNimiMinus; //tallentaa nimen
-            Session["haettuRD"] = haettuRDMinus; //tallentaa registration daten
-            Session["haettuBI"] = haettuBIMinus; //tallentaa business idn
-            Session["haettuForm"] = haettuFormMinus; //tallentaa company formin */
+            // If something goes wrong with the search, get an error message.
+            if (Session["SearchError"] != null)
+            errorText1.Text = (string)Session["SearchError"];
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            try
+            {
             if (string.IsNullOrEmpty((string)Session["earliestDay"]) && string.IsNullOrEmpty((string)Session["earliestMonth"]) && Session["Earliest"] != ""
                 || string.IsNullOrEmpty((string)Session["earliestDay"]) && Session["Earliest"] == "" && (string)Session["earliestMonth"] != ""
                 || string.IsNullOrEmpty((string)Session["earliestMonth"]) && Session["Earliest"] == "" && (string)Session["earliestDay"] != ""
@@ -106,11 +79,19 @@ namespace nettisivut_app
                 || (string)Session["earliestMonth"] != "" && Session["Earliest"] != "" && (string)Session["earliestDay"] != ""
                 && string.IsNullOrEmpty((string)Session["latestDay"]) && string.IsNullOrEmpty((string)Session["latestMonth"]) && Session["Latest"] == "")
             {
-                Response.Redirect("index.aspx"); //lataa sivun uudelleen ettei crashaa
+                Response.Redirect("index.aspx");
             }
             else
             {
-            if (Convert.ToString(Session["IsItNumber"]) == "yes" && Convert.ToString(Session["IsItNumber2"]) == "yes" || String.IsNullOrEmpty(earliestBox.Text) && Convert.ToString(Session["IsItNumber2"]) == "yes" || String.IsNullOrEmpty(latestBox.Text) && Convert.ToString(Session["IsItNumber"]) == "yes" || String.IsNullOrEmpty(earliestBox.Text) && String.IsNullOrEmpty(latestBox.Text))
+            if ((bool)Session["OneBoxSearch"] == true)
+            {
+                //errorText1.Text = "Error[006]: To make sure the exact search works, please insert more values.";
+                  errorText1.Text = "Error[006]: You can't do the search with only using the Company form box.";
+                  companyFormBox.Text = "";
+            }
+            else
+            {
+            if (Convert.ToString(Session["IsItNumber"]) == "yes" && Convert.ToString(Session["IsItNumber2"]) == "yes" || String.IsNullOrEmpty(earliestBox.Text) && Convert.ToString(Session["IsItNumber2"]) == "yes" || String.IsNullOrEmpty(latestBox.Text) && Convert.ToString(Session["IsItNumber"]) == "yes" || String.IsNullOrEmpty(earliestBox.Text) && String.IsNullOrEmpty(latestBox.Text) && (bool)Session["OneBoxSearch"] == false)
             {
                 errorText1.Text = "";
                 Response.Redirect("hauntulokset.aspx");
@@ -120,6 +101,12 @@ namespace nettisivut_app
                 earliestBox.Text = "";
                 latestBox.Text = "";
             }
+            }
+            }
+            }
+            catch (Exception err)
+            {
+                errorText1.Text = "Error[002]: Something went horribly wrong.";
             }
         }
 
@@ -137,6 +124,8 @@ namespace nettisivut_app
 
         protected void earliestBox_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
             int Earliest;
             bool isNumeric = int.TryParse(earliestBox.Text, out Earliest);
             if (isNumeric)
@@ -148,14 +137,21 @@ namespace nettisivut_app
             else
             {
                 Session["IsItNumber"] = "no";
-                errorText1.Text = "ERROR: Only integers allowed as the year inputs!";
+                errorText1.Text = "Error[001]: Only integers allowed as the year inputs!";
             }
-            
+            }
+            catch (Exception err)
+            {
+                errorText1.Text = "Error[004]: Something went horribly wrong.";
+            }
+
         }
 
         protected void latestBox_TextChanged(object sender, EventArgs e)
         {
-            int Latest;
+            try
+            {
+                int Latest;
             bool isNumeric2 = int.TryParse(latestBox.Text, out Latest);
             if (isNumeric2)
             {
@@ -166,7 +162,12 @@ namespace nettisivut_app
             else
             {
                 Session["IsItNumber2"] = "no";
-                errorText1.Text = "ERROR: Only integers allowed as the year inputs!";
+                errorText1.Text = "Error[001]: Only integers allowed as the year inputs!";
+            }
+            }
+            catch (Exception err)
+            {
+                errorText1.Text = "Error[004]: Something went horribly wrong.";
             }
         }
 
@@ -178,8 +179,27 @@ namespace nettisivut_app
 
         protected void companyFormBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string CompanyForm = companyFormBox.Text;
-            Session["CompanyForm"] = CompanyForm;
+            try
+            {
+                string CompanyForm = companyFormBox.Text;
+                if (!string.IsNullOrEmpty(CompanyForm) && string.IsNullOrEmpty((string)Session["BusinessSector"]) || string.IsNullOrEmpty((string)Session["Location"]) ||
+                    string.IsNullOrEmpty((string)Session["CompanySize"]) || string.IsNullOrEmpty((string)Session["earliestDay"]) || string.IsNullOrEmpty((string)Session["earliestMonth"]) || Session["Earliest"] == "" ||
+                    string.IsNullOrEmpty((string)Session["latestDay"]) || string.IsNullOrEmpty((string)Session["latestMonth"]) || Session["Latest"] == "")
+                {
+                    Session["OneBoxSearch"] = true;
+                }
+                else
+                {
+                    Session["CompanyForm"] = CompanyForm;
+
+                    // Making sure the value stays false.
+                    Session["OneBoxSearch"] = false;
+                } 
+            }
+            catch (Exception err)
+            {
+                errorText1.Text = "Error[007]: Something went horribly wrong.";
+            }
         }
         protected void theMonth_SelectedIndexChanged(object sender, EventArgs e)
         {
