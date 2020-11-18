@@ -145,11 +145,15 @@ namespace nettisivut_app
                 }
                 else
                 {
+                    Label11.Font.Bold = false;
                     Label11.Text = "No results found 😔";
                     Label12.Text = "";
                     Label14.Text = "";
                     Label16.Text = "";
+                    //
                     Button1.Text = "";
+                    Button1.Visible = false;
+                    //
                     Label13.Text = "";
                     Label15.Text = "";
                     Label18.Text = "";

@@ -57,18 +57,17 @@
             <asp:Label ID="Label14" runat="server" Text="Business ID: "></asp:Label>
             <asp:Label ID="Label15" runat="server" Text="(Business ID)" BackColor="#B2DCB6"></asp:Label><br />
             <asp:Label ID="Label16" runat="server" Text="Company form: "></asp:Label>
-            <asp:Label ID="Label18" runat="server" Text="(Company form)" BackColor="#B2DCB6"></asp:Label><br />
-            <asp:Button ID="Button1" runat="server" CssClass="MDbutton" Font-Bold="True" OnClick="Button1_Click" Text="More details" BackColor="White" BorderColor="White" BorderStyle="None" BorderWidth="0px" Font-Names="Bahnschrift" Font-Size="12pt" ForeColor="Blue" style=" font-family: Bahnschrift;
-    margin: 0 auto;
-    padding: 0;
-    font-weight: bold;
+            <asp:Label ID="Label18" runat="server" Text="(Company form)" BackColor="#B2DCB6"></asp:Label><br />                           
+            <asp:Button ID="Button1" runat="server" Font-Bold="False" OnClick="Button1_Click" Text="More details" BackColor="#0984E3" BorderWidth="0px" Font-Names="Bahnschrift" Font-Size="12pt" ForeColor="White" style=" font-family: Bahnschrift;
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 500;
     font-size: 16px;
-    color: blue;
-    background-color: white;
-    border: none;
-    outline: none;
+    outline:none;
+    /* border-radius: 12px; */
     cursor: pointer;" />
-                            </p>
+                 </p>
             <br />
             <br />
             <p class="labelstyle removepm">

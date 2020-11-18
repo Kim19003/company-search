@@ -87,6 +87,17 @@ input {
     cursor: pointer;
 }
 
+.MDbutton2 {
+    font-family: Bahnschrift;
+    margin: 0 auto;
+    padding: 0;
+    font-weight: bold;
+    font-size: 16px;
+    outline-style: solid;
+    color: blue;
+    cursor: pointer;
+}
+
 .infolabel {
     margin-left: 700px;
 }

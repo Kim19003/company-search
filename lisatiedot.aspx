@@ -35,14 +35,14 @@
 
         <h2>COMPANY DETAILS</h2>
         <h2 class="custom-h2"><%Response.Write((string)Session["haettuNimi"]); %></h2>
-        <p class="labelstyle removepm" style="margin-top:10px">Business ID: <%Response.Write((string)Session["haettuBI"]); %><br>
-        Registration time: <%Response.Write((string)Session["haettuRD"]); %><br>
-        Company form: <%Response.Write((string)Session["haettuForm"]); %><br>
-        Address: <%Response.Write((string)Session["haettuStreet"] + ", " + (string)Session["haettuCity"]); %><br>
-        Postal code: <%Response.Write((string)Session["haettuPC"]); %><br>
-        Country: <%Response.Write((string)Session["haettuCountry"]); %><br>
-        Phone number: <%Response.Write((string)Session["haettuPhone"]); %><br>
-        Website: <%Response.Write((string)Session["haettuWS"]); %></p>
+        <p class="labelstyle removepm" style="margin-top:10px">Business ID: <span style='background-color:#B2DCB6'><%Response.Write((string)Session["haettuBI"]); %></span><br>
+        Registration time: <span style='background-color:#B2DCB6'><%Response.Write((string)Session["haettuRD"]); %></span><br>
+        Company form: <span style='background-color:#B2DCB6'><%Response.Write((string)Session["haettuForm"]); %></span><br>
+        Address: <span style='background-color:#B2DCB6'><%Response.Write((string)Session["haettuStreet"] + ", " + (string)Session["haettuCity"]); %></span><br>
+        Postal code: <span style='background-color:#B2DCB6'><%Response.Write((string)Session["haettuPC"]); %></span><br>
+        Country: <span style='background-color:#B2DCB6'><%Response.Write((string)Session["haettuCountry"]); %></span><br>
+        Phone number: <span style='background-color:#B2DCB6'><%Response.Write((string)Session["haettuPhone"]); %></span><br>
+        Website: <span style='background-color:#B2DCB6'><%Response.Write((string)Session["haettuWS"]); %></span></p>
 
 <div>
 	  <a class="returnbox3" href="javascript: history.go(-1)"><h3 style="padding:0px;margin:0px">RETURN</h3></a>

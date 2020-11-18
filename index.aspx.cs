@@ -26,7 +26,8 @@ namespace nettisivut_app
             ////////////////////////////////////////////////////////////////////////
 
             Session.Timeout = 60;
-            // Session["BusinessSector"] = "Pirkanmaan Pienkoti"; //kokeilukoodi valmiilla inputilla
+
+            // Retain the queries
             Session["BusinessSector"] = businessSectorBox.Text; //business sector variable on yrityksen nimi nykyään
             Session["Location"] = locationBox.Text; //location variable on business id nykyään
             Session["Earliest"] = earliestBox.Text;
@@ -37,6 +38,8 @@ namespace nettisivut_app
             Session["latestMonth"] = theMonth2.Text;
             Session["earliestDay"] = theDay.Text;
             Session["latestDay"] = theDay2.Text;
+
+            // Empty the session variable values
             Session["responseFromFile"] = "";
             Session["responseFromFile2"] = "";
             Session["haettuNimi"] = "";
