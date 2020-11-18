@@ -4,5 +4,5 @@ Finnish Company Search Web App
 
 Planned upcoming changes:
 - Box for the More details -button
-- Highlighted company information on the More details -page
+- ~~Highlighted company information on the More details -page~~ ✔
 - Redesign
