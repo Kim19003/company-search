@@ -11,5 +11,5 @@ Planned upcoming changes:
 - Redesign
 
 Known errors:
-- Company name -search box is case sensitive
-- Search results counter not working perfectly
+- Company name -search box is case sensitive (fixed partially)
+- Search results counter not working perfectly (fixed partially)
