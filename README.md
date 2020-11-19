@@ -5,9 +5,11 @@
 Planned upcoming changes:
 - ~~Box for the More details -button~~ ✔
 - ~~Highlighted company information on the More details -page~~ ✔
-- Redesign
+- Code cleaning
+- Better error handling and more reasonable error messages
 - Removal of all the unnecessary stuff
+- Redesign
 
 Known errors:
 - Company name -search box is case sensitive
-- After a successful search, the search results counter always displays "1" (...though there is no more results shown to the user)
+- Search results counter not working perfectly
