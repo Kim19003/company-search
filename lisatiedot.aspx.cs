@@ -21,9 +21,8 @@ namespace nettisivut_app
             WebResponse response2 = myRequest2.GetResponse();
             Stream dataStream2 = response2.GetResponseStream();
             StreamReader reader2 = new StreamReader(dataStream2);
-            string responseFromFile3 = reader2.ReadToEnd();
-            Session["responseFromFile2"] = responseFromFile3;
-            string responseFromFile4 = (string)Session["responseFromFile2"];
+            string responseFromFile4 = reader2.ReadToEnd();
+            Session["responseFromFile2"] = responseFromFile4;
 
             string[] words2 = responseFromFile4.Split('}');
             int i2 = 0;
@@ -136,7 +135,7 @@ namespace nettisivut_app
             }
             catch (Exception err)
             {
-                // Error[005]
+                // Error
                 Response.Redirect("hauntulokset.aspx");
             }
         }

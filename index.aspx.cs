@@ -15,20 +15,10 @@ namespace nettisivut_app
         public int viisikymmenta = 50;
         protected void Page_Load(object sender, EventArgs e)
         {
-            ////////////////////////////////////////////////////////////////////////
-            // Error[001]: Only integers allowed as for some search box values
-            // Error[002]: Error in checking the null string values
-            // Error[003]: Error in the searching function
-            // Error[004]: Error in the integer checking function (related to 001)
-            // Error[005]: Error in the more details function
-            // Error[006]: Search can't be done by only using the Company form box.
-            // Error[007]: Error in the Company form value checking function (related to 006)
-            ////////////////////////////////////////////////////////////////////////
-
             Session.Timeout = 60;
 
             // Retain the queries
-            Session["BusinessSector"] = businessSectorBox.Text; //business sector variable on yrityksen nimi nykyään
+            Session["BusinessSector2"] = businessSectorBox.Text; //business sector variable on yrityksen nimi nykyään
             Session["Location"] = locationBox.Text; //location variable on business id nykyään
             Session["Earliest"] = earliestBox.Text;
             Session["Latest"] = latestBox.Text;
@@ -39,7 +29,7 @@ namespace nettisivut_app
             Session["earliestDay"] = theDay.Text;
             Session["latestDay"] = theDay2.Text;
 
-            // Empty the session variable values
+            // Empty or reset the session variable values
             Session["responseFromFile"] = "";
             Session["responseFromFile2"] = "";
             Session["haettuNimi"] = "";
@@ -57,6 +47,8 @@ namespace nettisivut_app
             Session["haettuCountry"] = "";
             Session["haettuPhone"] = "";
             Session["haettuWS"] = "";
+            Session["BusinessSector"] = "";
+            Session["BusinessSectorCS"] = "";
             Session["OneBoxSearch"] = false;
 
             // If something goes wrong with the search, get an error message.
@@ -82,14 +74,14 @@ namespace nettisivut_app
                 || (string)Session["earliestMonth"] != "" && Session["Earliest"] != "" && (string)Session["earliestDay"] != ""
                 && string.IsNullOrEmpty((string)Session["latestDay"]) && string.IsNullOrEmpty((string)Session["latestMonth"]) && Session["Latest"] == "")
             {
-                Response.Redirect("index.aspx");
+                    //errorText1.Text = "Only integers allowed as the year inputs!";
+                    Response.Redirect("index.aspx");
             }
             else
             {
             if ((bool)Session["OneBoxSearch"] == true)
             {
-                //errorText1.Text = "Error[006]: To make sure the exact search works, please insert more values.";
-                  errorText1.Text = "Error[006]: You can't do the search with only using the Company form box.";
+                  errorText1.Text = "You can't do the search with only using the Company form box.";
                   companyFormBox.Text = "";
             }
             else
@@ -109,14 +101,14 @@ namespace nettisivut_app
             }
             catch (Exception err)
             {
-                errorText1.Text = "Error[002]: Something went horribly wrong.";
+                errorText1.Text = "Something went horribly wrong.";
             }
         }
 
         public void businessSectorBox_TextChanged(object sender, EventArgs e)
         {
             string BusinessSector = businessSectorBox.Text;
-            Session["BusinessSector"] = BusinessSector;
+            Session["BusinessSector2"] = BusinessSector;
         }
 
         protected void locationBox_TextChanged(object sender, EventArgs e)
@@ -127,8 +119,6 @@ namespace nettisivut_app
 
         protected void earliestBox_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
             int Earliest;
             bool isNumeric = int.TryParse(earliestBox.Text, out Earliest);
             if (isNumeric)
@@ -140,20 +130,12 @@ namespace nettisivut_app
             else
             {
                 Session["IsItNumber"] = "no";
-                errorText1.Text = "Error[001]: Only integers allowed as the year inputs!";
+                errorText1.Text = "Only integers allowed as the year inputs!";
             }
-            }
-            catch (Exception err)
-            {
-                errorText1.Text = "Error[004]: Something went horribly wrong.";
-            }
-
         }
 
         protected void latestBox_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
                 int Latest;
             bool isNumeric2 = int.TryParse(latestBox.Text, out Latest);
             if (isNumeric2)
@@ -165,12 +147,7 @@ namespace nettisivut_app
             else
             {
                 Session["IsItNumber2"] = "no";
-                errorText1.Text = "Error[001]: Only integers allowed as the year inputs!";
-            }
-            }
-            catch (Exception err)
-            {
-                errorText1.Text = "Error[004]: Something went horribly wrong.";
+                errorText1.Text = "Only integers allowed as the year inputs!";
             }
         }
 
@@ -201,7 +178,7 @@ namespace nettisivut_app
             }
             catch (Exception err)
             {
-                errorText1.Text = "Error[007]: Something went horribly wrong.";
+                errorText1.Text = "Something went horribly wrong.";
             }
         }
         protected void theMonth_SelectedIndexChanged(object sender, EventArgs e)
