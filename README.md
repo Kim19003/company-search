@@ -7,7 +7,7 @@ Planned upcoming changes:
 - ~~Highlighted company information on the More details -page~~ ✔
 - Code cleaning
 - Better error handling and more reasonable error messages
-- Removal of all the unnecessary stuff
+- ~~Removal of all the unnecessary stuff~~ ✔
 - Redesign
 
 Known errors:
