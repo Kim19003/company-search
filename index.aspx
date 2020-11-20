@@ -22,14 +22,13 @@
   </div>
     <div class="banner dropdown">
 
-    <button class="dropdownbutton"><h2 style="padding:0px;margin:0px">MENU</h2></button>
+    <button class="dropdownbutton" style="cursor: pointer"><h2 style="padding:0px;margin:0px">Menu</h2></button>
 
 	<div class="dropdown-content">
 
 	<a href="index.aspx"><h3 style="padding:0px;margin:0px">Search</h3></a>
 
-    <a href="Viimeeksi%20lisätyt%20yritykset.aspx"><h3 style="padding:0px;margin:0px">Recently added companies</h3></a>
-    <a href="Kartta.aspx"><h3 style="padding:0px;margin:0px">Map</h3></a>
+    <a href="about.aspx"><h3 style="padding:0px;margin:0px">About</h3></a>
     </div>
 	</div>
     <div class="väli1">
@@ -151,14 +150,6 @@
                   </asp:DropDownList>
     <asp:TextBox ID="latestBox" placeholder="Insert the year..." runat="server" CssClass="searchboxVar space" OnTextChanged="latestBox_TextChanged" Width="97px" style="margin-left:1px;"></asp:TextBox>
 <p></p>
-    <label>Company size:</label><br />
-      <asp:DropDownList ID="companySizeBox" OnSelectedIndexChanged="companySizeBox_SelectedIndexChanged" runat="server" CssClass="searchbox space space2">
-                  <asp:ListItem Value="" Text="Choose company size..." style="color:grey"></asp:ListItem>
-                  <asp:ListItem Value="Small"> Small </asp:ListItem>
-                  <asp:ListItem Value="Medium"> Medium </asp:ListItem>
-                  <asp:ListItem Value="Large"> Large </asp:ListItem>
-      </asp:DropDownList>
-        <p></p>
     <label>Company form:</label><br />
       <asp:DropDownList ID="companyFormBox" OnSelectedIndexChanged="companyFormBox_SelectedIndexChanged" runat="server" CssClass="searchbox space space2">
                   <asp:ListItem Value="" Text="Choose company form..." style="color:grey"> </asp:ListItem>
@@ -175,12 +166,10 @@
 <div class="väli2">
 </div>
 <div class="footer">
-<p>
-<img src="pictures/logoxd.JPG" alt="logo" height="30px;">
-        ©2020 Mukero Oy<br />
+      <p style="font-size: 12px">
         This site uses avoindata.prh.fi as a data source.
-</p>
-</div>
+      </p>
+    </div>
 </div>
     </form>
 </body>

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace nettisivut_app
 {
-    public partial class tominrakennusfirma : System.Web.UI.Page
+    public partial class about : System.Web.UI.Page
     {
         public int viisikymmenta = 50;
     protected void Page_Load(object sender, EventArgs e)

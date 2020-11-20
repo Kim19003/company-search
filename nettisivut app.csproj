@@ -69,14 +69,7 @@
   <ItemGroup>
     <Content Include="awp style.css" />
     <Content Include="lisatiedot.aspx" />
-    <Content Include="viimeeksi lisätyt yritykset2.aspx" />
-    <Content Include="Vertin rakennustarvikkeet.aspx" />
-    <Content Include="Lahti Cycling.aspx" />
-    <Content Include="Ugurin pizzeria.aspx" />
-    <Content Include="Tomin rakennusfirma.aspx" />
-    <Content Include="peltosen vaatteet.aspx" />
-    <Content Include="viimeeksi lisätyt yritykset.aspx" />
-    <Content Include="kartta.aspx" />
+    <Content Include="about.aspx" />
     <Content Include="hauntulokset.aspx" />
     <Content Include="index.aspx" />
     <Content Include="Web.config" />
@@ -89,62 +82,13 @@
     <Compile Include="lisatiedot.aspx.designer.cs">
       <DependentUpon>lisatiedot.aspx</DependentUpon>
     </Compile>
-    <Compile Include="viimeeksi lisätyt yritykset2.aspx.cs">
-      <DependentUpon>viimeeksi lisätyt yritykset2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="viimeeksi lisätyt yritykset2.aspx.designer.cs">
-      <DependentUpon>viimeeksi lisätyt yritykset2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vertin rakennustarvikkeet.aspx.cs">
-      <DependentUpon>Vertin rakennustarvikkeet.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vertin rakennustarvikkeet.aspx.designer.cs">
-      <DependentUpon>Vertin rakennustarvikkeet.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Lahti Cycling.aspx.cs">
-      <DependentUpon>Lahti Cycling.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Lahti Cycling.aspx.designer.cs">
-      <DependentUpon>Lahti Cycling.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Ugurin pizzeria.aspx.cs">
-      <DependentUpon>Ugurin pizzeria.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Ugurin pizzeria.aspx.designer.cs">
-      <DependentUpon>Ugurin pizzeria.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Tomin rakennusfirma.aspx.cs">
-      <DependentUpon>Tomin rakennusfirma.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Tomin rakennusfirma.aspx.designer.cs">
-      <DependentUpon>Tomin rakennusfirma.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="peltosen vaatteet.aspx.cs">
-      <DependentUpon>peltosen vaatteet.aspx</DependentUpon>
+    <Compile Include="about.aspx.cs">
+      <DependentUpon>about.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="peltosen vaatteet.aspx.designer.cs">
-      <DependentUpon>peltosen vaatteet.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="viimeeksi lisätyt yritykset.aspx.cs">
-      <DependentUpon>viimeeksi lisätyt yritykset.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="viimeeksi lisätyt yritykset.aspx.designer.cs">
-      <DependentUpon>viimeeksi lisätyt yritykset.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="kartta.aspx.cs">
-      <DependentUpon>kartta.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="kartta.aspx.designer.cs">
-      <DependentUpon>kartta.aspx</DependentUpon>
+    <Compile Include="about.aspx.designer.cs">
+      <DependentUpon>about.aspx</DependentUpon>
     </Compile>
     <Compile Include="hauntulokset.aspx.cs">
       <DependentUpon>hauntulokset.aspx</DependentUpon>

@@ -298,11 +298,9 @@ namespace nettisivut_app
             {
                 Label5.Text = (string)Session["CompanyForm"];
             }
-            Label4.Text = (string)Session["CompanySize"];
             }
             catch (Exception err)
             {
-                //Session["SearchError"] = Session["CompanyData"];
                 Session["SearchError"] = "Error creating web request.";
                 Response.Redirect("index.aspx");
             }

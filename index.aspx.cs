@@ -22,7 +22,6 @@ namespace nettisivut_app
             Session["Location"] = locationBox.Text; //location variable on business id nykyään
             Session["Earliest"] = earliestBox.Text;
             Session["Latest"] = latestBox.Text;
-            Session["CompanySize"] = companySizeBox.Text;
             Session["CompanyForm"] = companyFormBox.Text;
             Session["earliestMonth"] = theMonth.Text;
             Session["latestMonth"] = theMonth2.Text;
@@ -149,12 +148,6 @@ namespace nettisivut_app
                 Session["IsItNumber2"] = "no";
                 errorText1.Text = "Only integers allowed as the year inputs!";
             }
-        }
-
-        protected void companySizeBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string CompanySize = companySizeBox.Text;
-            Session["CompanySize"] = CompanySize;
         }
 
         protected void companyFormBox_SelectedIndexChanged(object sender, EventArgs e)
