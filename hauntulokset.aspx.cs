@@ -123,17 +123,17 @@ namespace nettisivut_app
             // Result amount calculator
             int tulostenMaara = 0;
                 i = 0;
-                if (!string.IsNullOrEmpty((string)Session["BusinessSector"]))
-                {
-                    foreach (string str in words)
+                    if (!string.IsNullOrEmpty((string)Session["BusinessSector"]) && string.IsNullOrEmpty((string)Session["CompanyForm"]) && string.IsNullOrEmpty((string)Session["Location"])) // Name
                     {
-                        if (str.Contains("\"name\":\"" + (string)Session["BusinessSector"]))
+                        foreach (string str in words)
                         {
-                            tulostenMaara++;
+                            if (str.Contains("\"name\":\"" + (string)Session["BusinessSector"]))
+                            {
+                                tulostenMaara++;
+                            }
                         }
                     }
-                }
-                    if (!string.IsNullOrEmpty((string)Session["CompanyForm"]))
+                    if (!string.IsNullOrEmpty((string)Session["CompanyForm"]) && string.IsNullOrEmpty((string)Session["BusinessSector"]) && string.IsNullOrEmpty((string)Session["Location"])) // Company form
                     {
                         tulostenMaara = 0;
                         foreach (string str in words)
@@ -144,12 +144,56 @@ namespace nettisivut_app
                             }
                         }
                     }
-                    if (!string.IsNullOrEmpty((string)Session["Location"]))
+                    if (!string.IsNullOrEmpty((string)Session["Location"]) && string.IsNullOrEmpty((string)Session["BusinessSector"]) && string.IsNullOrEmpty((string)Session["CompanyForm"])) // Business Id
                     {
                         tulostenMaara = 0;
                         foreach (string str in words)
                         {
                             if (str.Contains("\"businessId\":\"" + (string)Session["Location"]) && i < words.Length)
+                            {
+                                tulostenMaara++;
+                            }
+                        }
+                    }
+                    if (!string.IsNullOrEmpty((string)Session["BusinessSector"]) && !string.IsNullOrEmpty((string)Session["Location"]) && string.IsNullOrEmpty((string)Session["CompanyForm"])) // Name and Business Id
+                    {
+                        tulostenMaara = 0;
+                        foreach (string str in words)
+                        {
+                            if (str.Contains("\"name\":\"" + (string)Session["BusinessSector"]) && str.Contains("\"businessId\":\"" + (string)Session["Location"]))
+                            {
+                                tulostenMaara++;
+                            }
+                        }
+                    }
+                    if (!string.IsNullOrEmpty((string)Session["CompanyForm"]) && !string.IsNullOrEmpty((string)Session["Location"]) && string.IsNullOrEmpty((string)Session["BusinessSector"])) // Company form and Business id
+                    {
+                        tulostenMaara = 0;
+                        foreach (string str in words)
+                        {
+                            if (str.Contains("\"companyForm\":\"" + (string)Session["CompanyForm"]) && str.Contains("\"businessId\":\"" + (string)Session["Location"]))
+                            {
+                                tulostenMaara++;
+                            }
+                        }
+                    }
+                    if (!string.IsNullOrEmpty((string)Session["CompanyForm"]) && string.IsNullOrEmpty((string)Session["Location"]) && !string.IsNullOrEmpty((string)Session["BusinessSector"])) // Company form and Name
+                    {
+                        tulostenMaara = 0;
+                        foreach (string str in words)
+                        {
+                            if (str.Contains("\"companyForm\":\"" + (string)Session["CompanyForm"]) && str.Contains("\"name\":\"" + (string)Session["BusinessSector"]))
+                            {
+                                tulostenMaara++;
+                            }
+                        }
+                    }
+                    if (!string.IsNullOrEmpty((string)Session["BusinessSector"]) && !string.IsNullOrEmpty((string)Session["Location"]) && !string.IsNullOrEmpty((string)Session["CompanyForm"])) // All
+                    {
+                        tulostenMaara = 0;
+                        foreach (string str in words)
+                        {
+                            if (str.Contains("\"name\":\"" + (string)Session["BusinessSector"]) && str.Contains("\"businessId\":\"" + (string)Session["Location"]) && str.Contains("\"companyForm\":\"" + (string)Session["CompanyForm"]))
                             {
                                 tulostenMaara++;
                             }
@@ -211,7 +255,7 @@ namespace nettisivut_app
                 // Result amount calculator
                 int tulostenMaara = 0;
                 i = 0;
-                if (!string.IsNullOrEmpty((string)Session["BusinessSectorCS"]))
+                if (!string.IsNullOrEmpty((string)Session["BusinessSectorCS"]) && string.IsNullOrEmpty((string)Session["CompanyForm"]) && string.IsNullOrEmpty((string)Session["Location"])) // Name
                 {
                     foreach (string str in words)
                     {
@@ -221,7 +265,7 @@ namespace nettisivut_app
                         }
                     }
                 }
-                if (!string.IsNullOrEmpty((string)Session["CompanyForm"]))
+                if (!string.IsNullOrEmpty((string)Session["CompanyForm"]) && string.IsNullOrEmpty((string)Session["BusinessSectorCS"]) && string.IsNullOrEmpty((string)Session["Location"])) // Company form
                 {
                     tulostenMaara = 0;
                     foreach (string str in words)
@@ -232,7 +276,7 @@ namespace nettisivut_app
                         }
                     }
                 }
-                if (!string.IsNullOrEmpty((string)Session["Location"]))
+                if (!string.IsNullOrEmpty((string)Session["Location"]) && string.IsNullOrEmpty((string)Session["BusinessSectorCS"]) && string.IsNullOrEmpty((string)Session["CompanyForm"])) // Business Id
                 {
                     tulostenMaara = 0;
                     foreach (string str in words)
@@ -243,7 +287,51 @@ namespace nettisivut_app
                         }
                     }
                 }
-                Label19.Text = "Number of results found: ";
+                if (!string.IsNullOrEmpty((string)Session["BusinessSectorCS"]) && !string.IsNullOrEmpty((string)Session["Location"]) && string.IsNullOrEmpty((string)Session["CompanyForm"])) // Name and Business Id
+                    {
+                        tulostenMaara = 0;
+                        foreach (string str in words)
+                        {
+                            if (str.Contains("\"name\":\"" + (string)Session["BusinessSectorCS"]) && str.Contains("\"businessId\":\"" + (string)Session["Location"]))
+                            {
+                                tulostenMaara++;
+                            }
+                        }
+                    }
+                    if (!string.IsNullOrEmpty((string)Session["CompanyForm"]) && !string.IsNullOrEmpty((string)Session["Location"]) && string.IsNullOrEmpty((string)Session["BusinessSectorCS"])) // Company form and Business id
+                    {
+                        tulostenMaara = 0;
+                        foreach (string str in words)
+                        {
+                            if (str.Contains("\"companyForm\":\"" + (string)Session["CompanyForm"]) && str.Contains("\"businessId\":\"" + (string)Session["Location"]))
+                            {
+                                tulostenMaara++;
+                            }
+                        }
+                    }
+                    if (!string.IsNullOrEmpty((string)Session["CompanyForm"]) && string.IsNullOrEmpty((string)Session["Location"]) && !string.IsNullOrEmpty((string)Session["BusinessSectorCS"])) // Company form and Name
+                    {
+                        tulostenMaara = 0;
+                        foreach (string str in words)
+                        {
+                            if (str.Contains("\"companyForm\":\"" + (string)Session["CompanyForm"]) && str.Contains("\"name\":\"" + (string)Session["BusinessSectorCS"]))
+                            {
+                                tulostenMaara++;
+                            }
+                        }
+                    }
+                    if (!string.IsNullOrEmpty((string)Session["BusinessSectorCS"]) && !string.IsNullOrEmpty((string)Session["Location"]) && !string.IsNullOrEmpty((string)Session["CompanyForm"])) // All
+                    {
+                        tulostenMaara = 0;
+                        foreach (string str in words)
+                        {
+                            if (str.Contains("\"name\":\"" + (string)Session["BusinessSectorCS"]) && str.Contains("\"businessId\":\"" + (string)Session["Location"]) && str.Contains("\"companyForm\":\"" + (string)Session["CompanyForm"]))
+                            {
+                                tulostenMaara++;
+                            }
+                        }
+                    }
+                    Label19.Text = "Number of results found: ";
                 Label20.Text = Convert.ToString(tulostenMaara);
             }
             
