@@ -63,7 +63,7 @@
     font-size: 16px;
     outline:none;
     /* border-radius: 12px; */
-    cursor: pointer;" />
+    cursor: pointer;" CssClass="roundbord" />
                  </p>
             <br />
             <br />
@@ -79,8 +79,8 @@
     <div class="väli2">
     </div>
     <div class="footer">
-      <p style="font-size: 12px">
-        This site uses avoindata.prh.fi as a data source.
+      <p style="font-size: 14px; color:white; text-align:center">
+        This app uses avoindata.prh.fi as a data source.
       </p>
     </div>
   </div>

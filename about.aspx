@@ -33,13 +33,24 @@
     </div>
     <div class="mainpage">
         <h2>ABOUT</h2>
-  <p class="custom-p">Some stuff...</p>
+  <p class="custom-p"><b>Description:</b> Finnish company search application,<br />shows the best result for the user.<br /><br />
+      <b>Background:</b> Perfection of my older school project.<br /><br />
+      <b>Methods used:</b> C#, ASP.NET, JavaScript, HTML & CSS.<br /><br />
+      <b>Made by:</b> Kim19003, additional thanks to my old project group<br />members.<br /><br />
+      <b>Color pallet:</b> "Portada" by: Diego Fernández Aguilar.
+  </p>
+    <image src ="\pictures\color%20pallet.png" style="max-width: 100%; min-width: 100%;"></image>
+        <p class="custom-p">
+            </p>
+               <div>
+	  <a class="returnbox" style="margin-top:60px" href="index.aspx"><h3 style="padding:0px;margin:0px">RETURN</h3></a><br />
+	  </div>
     </div>
     <div class="väli2">
     </div>
     <div class="footer">
-      <p style="font-size: 12px">
-        This site uses avoindata.prh.fi as a data source.
+      <p style="font-size: 14px; color:white; text-align:center">
+        This app uses avoindata.prh.fi as a data source.
       </p>
     </div>
   </div>

@@ -13,12 +13,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Company search</title>
   <link href="awp%20style.css" rel="stylesheet" type="text/css" runat="server"/>
-<style type="text/css">
-option:hover {
-background-color:#BD3B70;
-color:yellow;
-}
-</style>
 </head>
 
 <body>
@@ -45,15 +39,15 @@ color:yellow;
       </h2>
 
         <label>Name of the company:</label><br>
-        <asp:TextBox ID="businessSectorBox" placeholder="Insert the name..." runat="server" CssClass="searchbox space" OnTextChanged="businessSectorBox_TextChanged"></asp:TextBox>
+        <asp:TextBox ID="businessSectorBox" placeholder="Insert the name..." runat="server" CssClass="searchbox space" OnTextChanged="businessSectorBox_TextChanged" Width="168px"></asp:TextBox>
 <p></p>
       <label>Business ID:</label><br>
-        <asp:TextBox ID="locationBox" placeholder="Insert the business ID..." runat="server" CssClass="searchbox space" OnTextChanged="locationBox_TextChanged"></asp:TextBox>
+        <asp:TextBox ID="locationBox" placeholder="Insert the business ID..." runat="server" CssClass="searchbox space" OnTextChanged="locationBox_TextChanged" Width="168px"></asp:TextBox>
 	<p></p>
       <label>Foundation time: </label>
         <label style="color:grey">(2020 if blank)</label><br>
       <label>Earliest:&nbsp;</label>
-        <asp:DropDownList ID="theDay" OnSelectedIndexChanged="theDay_SelectedIndexChanged" runat="server" CssClass="searchboxVar2 space space2 space3" Width="97px">
+        <asp:DropDownList ID="theDay" OnSelectedIndexChanged="theDay_SelectedIndexChanged" runat="server" CssClass="searchboxVar2 space space2 space3" Width="110px">
                   <asp:ListItem Value="" Text="Day..." style="color:grey"> </asp:ListItem>
                   <asp:ListItem Value="01">01</asp:ListItem>
                   <asp:ListItem Value="02">02</asp:ListItem>
@@ -87,7 +81,7 @@ color:yellow;
             <asp:ListItem Value="30">30</asp:ListItem>
             <asp:ListItem Value="31">31</asp:ListItem>
                   </asp:DropDownList>
-                      <asp:DropDownList ID="theMonth" OnSelectedIndexChanged="theMonth_SelectedIndexChanged" runat="server" CssClass="searchboxVar2 space space2" Width="97px">
+                      <asp:DropDownList ID="theMonth" OnSelectedIndexChanged="theMonth_SelectedIndexChanged" runat="server" CssClass="searchboxVar2 space space2" Width="110px">
                   <asp:ListItem Value="" Text="Month..." style="color:grey"> </asp:ListItem>
                   <asp:ListItem Value="01">January</asp:ListItem>
                   <asp:ListItem Value="02">February</asp:ListItem>
@@ -102,7 +96,7 @@ color:yellow;
                   <asp:ListItem Value="11">November</asp:ListItem>
                   <asp:ListItem Value="12">December</asp:ListItem>
                   </asp:DropDownList>
-        <asp:DropDownList ID="earliestBox" OnSelectedIndexChanged="earliestBox_TextChanged" runat="server" CssClass="searchboxVar2 space space2" Width="97px">
+        <asp:DropDownList ID="earliestBox" OnSelectedIndexChanged="earliestBox_TextChanged" runat="server" CssClass="searchboxVar2 space space2" Width="110px">
                               <asp:ListItem Value="" Text="Year..." style="color:grey"> </asp:ListItem>
                   <asp:ListItem Value="2013">2013</asp:ListItem>
                   <asp:ListItem Value="2014">2014</asp:ListItem>
@@ -119,7 +113,7 @@ color:yellow;
             </asp:DropDownList>
         <br>
 	    <label style="margin-right:10px">Latest:&nbsp;</label>
-        <asp:DropDownList ID="theDay2" OnSelectedIndexChanged="theDay2_SelectedIndexChanged" runat="server" CssClass="searchboxVar2 space space2 space3Var" Width="97px">
+        <asp:DropDownList ID="theDay2" OnSelectedIndexChanged="theDay2_SelectedIndexChanged" runat="server" CssClass="searchboxVar2 space space2 space3Var" Width="110px">
                   <asp:ListItem Value="" Text="Day..." style="color:grey"> </asp:ListItem>
                   <asp:ListItem Value="01">01</asp:ListItem>
                   <asp:ListItem Value="02">02</asp:ListItem>
@@ -153,7 +147,7 @@ color:yellow;
             <asp:ListItem Value="30">30</asp:ListItem>
             <asp:ListItem Value="31">31</asp:ListItem>
                   </asp:DropDownList>
-                              <asp:DropDownList ID="theMonth2" OnSelectedIndexChanged="theMonth2_SelectedIndexChanged" runat="server" CssClass="searchboxVar2 space space2" Width="97px">
+                              <asp:DropDownList ID="theMonth2" OnSelectedIndexChanged="theMonth2_SelectedIndexChanged" runat="server" CssClass="searchboxVar2 space space2" Width="110px">
                   <asp:ListItem Value="" Text="Month..." style="color:grey"> </asp:ListItem>
                   <asp:ListItem Value="01">January</asp:ListItem>
                   <asp:ListItem Value="02">February</asp:ListItem>
@@ -168,7 +162,7 @@ color:yellow;
                   <asp:ListItem Value="11">November</asp:ListItem>
                   <asp:ListItem Value="12">December</asp:ListItem>
                   </asp:DropDownList>
-            <asp:DropDownList ID="latestBox" OnSelectedIndexChanged="latestBox_TextChanged" runat="server" CssClass="searchboxVar2 space space2" Width="97px">
+            <asp:DropDownList ID="latestBox" OnSelectedIndexChanged="latestBox_TextChanged" runat="server" CssClass="searchboxVar2 space space2" Width="110px">
                               <asp:ListItem Value="" Text="Year..." style="color:grey"> </asp:ListItem>
                   <asp:ListItem Value="2013">2013</asp:ListItem>
                   <asp:ListItem Value="2014">2014</asp:ListItem>
@@ -185,7 +179,7 @@ color:yellow;
             </asp:DropDownList>
 <p></p>
     <label>Company form:</label><br />
-      <asp:DropDownList ID="companyFormBox" OnSelectedIndexChanged="companyFormBox_SelectedIndexChanged" runat="server" CssClass="searchbox space space2">
+      <asp:DropDownList ID="companyFormBox" OnSelectedIndexChanged="companyFormBox_SelectedIndexChanged" runat="server" CssClass="searchbox space space2" Width="195px">
                   <asp:ListItem Value="" Text="Choose company form..." style="color:grey"> </asp:ListItem>
                   <asp:ListItem Value="OY">OY</asp:ListItem>
                   <asp:ListItem Value="AOY">AOY</asp:ListItem>
@@ -200,8 +194,8 @@ color:yellow;
 <div class="väli2">
 </div>
 <div class="footer">
-      <p style="font-size: 12px">
-        This site uses avoindata.prh.fi as a data source.
+      <p style="font-size: 14px; color:white; text-align:center">
+        This app uses avoindata.prh.fi as a data source.
       </p>
     </div>
 </div>
