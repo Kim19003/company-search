@@ -5,10 +5,10 @@
 Planned upcoming changes:
 - ~~Box for the More details -button~~ ✔
 - ~~Highlighted company information on the More details -page~~ ✔
-- Code cleaning
+- ~~Code cleaning~~ ✔
 - Better error handling and more reasonable error messages
 - ~~Removal of all the unnecessary stuff~~ ✔
-- Redesign
+- ~~Redesign~~ ✔
 
 Known errors:
 - Company name -search box is case sensitive (fixed partially)
