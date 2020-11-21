@@ -18,8 +18,8 @@ namespace nettisivut_app
             Session.Timeout = 60;
 
             // Retain the queries
-            Session["BusinessSector2"] = businessSectorBox.Text; //business sector variable on yrityksen nimi nykyään
-            Session["Location"] = locationBox.Text; //location variable on business id nykyään
+            Session["BusinessSector2"] = businessSectorBox.Text; // "BusinessSector" is Company name now
+            Session["Location"] = locationBox.Text; // "Location" is Business Id now
             Session["Earliest"] = earliestBox.Text;
             Session["Latest"] = latestBox.Text;
             Session["CompanyForm"] = companyFormBox.Text;
@@ -48,7 +48,6 @@ namespace nettisivut_app
             Session["haettuWS"] = "";
             Session["BusinessSector"] = "";
             Session["BusinessSectorCS"] = "";
-            Session["OneBoxSearch"] = false;
 
             // If something goes wrong with the search, get an error message.
             if (Session["SearchError"] != null)
@@ -73,29 +72,12 @@ namespace nettisivut_app
                 || (string)Session["earliestMonth"] != "" && Session["Earliest"] != "" && (string)Session["earliestDay"] != ""
                 && string.IsNullOrEmpty((string)Session["latestDay"]) && string.IsNullOrEmpty((string)Session["latestMonth"]) && Session["Latest"] == "")
             {
-                    //errorText1.Text = "Only integers allowed as the year inputs!";
                     Response.Redirect("index.aspx");
             }
             else
             {
-            if ((bool)Session["OneBoxSearch"] == true)
-            {
-                  errorText1.Text = "You can't do the search with only using the Company form box.";
-                  companyFormBox.Text = "";
-            }
-            else
-            {
-            if (Convert.ToString(Session["IsItNumber"]) == "yes" && Convert.ToString(Session["IsItNumber2"]) == "yes" || String.IsNullOrEmpty(earliestBox.Text) && Convert.ToString(Session["IsItNumber2"]) == "yes" || String.IsNullOrEmpty(latestBox.Text) && Convert.ToString(Session["IsItNumber"]) == "yes" || String.IsNullOrEmpty(earliestBox.Text) && String.IsNullOrEmpty(latestBox.Text) && (bool)Session["OneBoxSearch"] == false)
-            {
                 errorText1.Text = "";
                 Response.Redirect("hauntulokset.aspx");
-                }
-            else
-            {
-                earliestBox.Text = "";
-                latestBox.Text = "";
-            }
-            }
             }
             }
             catch (Exception err)
@@ -118,61 +100,33 @@ namespace nettisivut_app
 
         protected void earliestBox_TextChanged(object sender, EventArgs e)
         {
-            int Earliest;
-            bool isNumeric = int.TryParse(earliestBox.Text, out Earliest);
-            if (isNumeric)
+            try
             {
-                Session["IsItNumber"] = "yes";
-                Earliest = Convert.ToInt32(earliestBox.Text);
+                int Earliest = Convert.ToInt32(earliestBox.Text);
                 Session["Earliest"] = Earliest;
             }
-            else
+            catch (Exception err)
             {
-                Session["IsItNumber"] = "no";
-                errorText1.Text = "Only integers allowed as the year inputs!";
+                errorText1.Text = "Unexpected error in the second \"Year\" -box.";
             }
         }
 
         protected void latestBox_TextChanged(object sender, EventArgs e)
         {
-                int Latest;
-            bool isNumeric2 = int.TryParse(latestBox.Text, out Latest);
-            if (isNumeric2)
-            {
-                Session["IsItNumber2"] = "yes";
-                Latest = Convert.ToInt32(latestBox.Text);
+            try {
+                int Latest = Convert.ToInt32(latestBox.Text);
                 Session["Latest"] = Latest;
-            }
-            else
+        }
+            catch (Exception err)
             {
-                Session["IsItNumber2"] = "no";
-                errorText1.Text = "Only integers allowed as the year inputs!";
+                errorText1.Text = "Unexpected error in the first \"Year\" -box.";
             }
         }
 
         protected void companyFormBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                string CompanyForm = companyFormBox.Text;
-                if (!string.IsNullOrEmpty(CompanyForm) && string.IsNullOrEmpty((string)Session["BusinessSector"]) || string.IsNullOrEmpty((string)Session["Location"]) ||
-                    string.IsNullOrEmpty((string)Session["CompanySize"]) || string.IsNullOrEmpty((string)Session["earliestDay"]) || string.IsNullOrEmpty((string)Session["earliestMonth"]) || Session["Earliest"] == "" ||
-                    string.IsNullOrEmpty((string)Session["latestDay"]) || string.IsNullOrEmpty((string)Session["latestMonth"]) || Session["Latest"] == "")
-                {
-                    Session["OneBoxSearch"] = true;
-                }
-                else
-                {
-                    Session["CompanyForm"] = CompanyForm;
-
-                    // Making sure the value stays false.
-                    Session["OneBoxSearch"] = false;
-                } 
-            }
-            catch (Exception err)
-            {
-                errorText1.Text = "Something went horribly wrong.";
-            }
+             string CompanyForm = companyFormBox.Text;
+             Session["CompanyForm"] = CompanyForm;
         }
         protected void theMonth_SelectedIndexChanged(object sender, EventArgs e)
         {

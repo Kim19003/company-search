@@ -35,13 +35,13 @@
 		<div class="searchresults">
 		<p class="labelstyle removepm">
             <asp:Label ID="Label6" runat="server" Text="The name of the company is: "></asp:Label>
-            <asp:Label ID="Label1" runat="server" Text="" BackColor="#B2DCB6"></asp:Label><br />
+            <asp:Label ID="Label1" runat="server" BackColor="#edc5d5"></asp:Label><br />
             <asp:Label ID="Label7" runat="server" Text="The business ID of the company is: "></asp:Label>
-            <asp:Label ID="Label2" runat="server" Text="" BackColor="#B2DCB6"></asp:Label><br />
+            <asp:Label ID="Label2" runat="server" BackColor="#edc5d5"></asp:Label><br />
             <asp:Label ID="Label8" runat="server" Text="The company was founded in between: "></asp:Label>
-            <asp:Label ID="Label3" runat="server" Text="(Foundation time: Earliest and Latest)" BackColor="#B2DCB6"></asp:Label><br />
+            <asp:Label ID="Label3" runat="server" Text="(Foundation time: Earliest and Latest)" BackColor="#edc5d5"></asp:Label><br />
             <asp:Label ID="Label10" runat="server" Text="The company's form is:  "></asp:Label>
-            <asp:Label ID="Label5" runat="server" Text="" BackColor="#B2DCB6"></asp:Label>
+            <asp:Label ID="Label5" runat="server" Text="" BackColor="#edc5d5"></asp:Label>
             </p>
             <br />
                 <h2>
@@ -50,12 +50,12 @@
             <p class="labelstyle removepm">
             <asp:Label ID="Label11" runat="server" Text="Unnamed Company" Font-Bold="True" Font-Size="Large"></asp:Label><br />
             <asp:Label ID="Label12" runat="server" Text="Registered: "></asp:Label>
-            <asp:Label ID="Label13" runat="server" Text="(Registered)" BackColor="#B2DCB6"></asp:Label><br />
+            <asp:Label ID="Label13" runat="server" Text="(Registered)" BackColor="#edc5d5"></asp:Label><br />
             <asp:Label ID="Label14" runat="server" Text="Business ID: "></asp:Label>
-            <asp:Label ID="Label15" runat="server" Text="(Business ID)" BackColor="#B2DCB6"></asp:Label><br />
+            <asp:Label ID="Label15" runat="server" Text="(Business ID)" BackColor="#edc5d5"></asp:Label><br />
             <asp:Label ID="Label16" runat="server" Text="Company form: "></asp:Label>
-            <asp:Label ID="Label18" runat="server" Text="(Company form)" BackColor="#B2DCB6"></asp:Label><br />                           
-            <asp:Button ID="Button1" runat="server" Font-Bold="False" OnClick="Button1_Click" Text="More details" BackColor="#0984E3" BorderWidth="0px" Font-Names="Bahnschrift" Font-Size="12pt" ForeColor="White" style=" font-family: Bahnschrift;
+            <asp:Label ID="Label18" runat="server" Text="(Company form)" BackColor="#edc5d5"></asp:Label><br />               
+            <asp:Button ID="Button1" runat="server" Font-Bold="False" OnClick="Button1_Click" Text="More details" BackColor="#BD3B70" BorderWidth="0px" Font-Names="Bahnschrift" Font-Size="12pt" ForeColor="White" style=" font-family: Bahnschrift;
     margin-top: 5px;
     padding-left: 10px;
     padding-right: 10px;
@@ -69,7 +69,7 @@
             <br />
             <p class="labelstyle removepm">
             <asp:Label ID="Label19" runat="server" Text=""></asp:Label>
-            <asp:Label ID="Label20" runat="server" Text="" BackColor="#B2DCB6"></asp:Label><br />
+            <asp:Label ID="Label20" runat="server" Text="" BackColor="#edc5d5"></asp:Label><br />
             </p>
 		</div>
       <div>

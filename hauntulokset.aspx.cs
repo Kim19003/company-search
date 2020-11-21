@@ -28,9 +28,7 @@ namespace nettisivut_app
             if (string.IsNullOrEmpty((string)Session["earliestMonth"])
                     && string.IsNullOrEmpty((string)Session["earliestDay"])
                     && Session["Earliest"] == ""
-                    //&& string.IsNullOrEmpty((string)Session["Earliest"])
                     && Session["Latest"] == ""
-                    //&& string.IsNullOrEmpty((string)Session["Latest"])
                     && string.IsNullOrEmpty((string)Session["latestMonth"])
                     && string.IsNullOrEmpty((string)Session["latestDay"]))
                 {
@@ -41,19 +39,18 @@ namespace nettisivut_app
                     Session["earliestSearcher"] = (int)Session["Earliest"] + "-" + (string)Session["earliestMonth"] + "-" + (string)(Session["earliestDay"]);
                     Session["latestSearcher"] = (int)Session["Latest"] + "-" + (string)Session["latestMonth"] + "-" + (string)(Session["latestDay"]);
                     Label3.Text = (int)Session["Earliest"] + "-" + (string)Session["earliestMonth"] + "-" + (string)(Session["earliestDay"]) + " - " + (int)Session["Latest"] + "-" + (string)Session["latestMonth"] + "-" + (string)(Session["latestDay"]);
-                    //Label3.Text = (string)Session["earliestDay"] + "-" + (string)Session["earliestMonth"] + "-" + Convert.ToString(Session["Earliest"]) + " - " + (string)Session["latestDay"] + "-" + (string)Session["latestMonth"] + "-" + Convert.ToString(Session["Latest"]);
                 }
 
-                //***hakuohjelma alkaa (nimi käyttää BusinessSector variablea)***
+                // The search program starts
                 if (string.IsNullOrEmpty((string)Session["BusinessSector"])
                     && string.IsNullOrEmpty((string)Session["CompanyForm"])
-                    && string.IsNullOrEmpty((string)Session["Location"])) //täyttää variablet spämmillä jos tyhjät (antaa no resultsin)
+                    && string.IsNullOrEmpty((string)Session["Location"])) // Fills empty variables with spam and gives "no results"
                 {
                     Session["BusinessSector"] = "d1211313dd13";
                     Session["CompanyForm"] = "d1211313dd13";
                     Session["Location"] = "d1211313dd13";
                 }
-                if (Session["Earliest"] == "" || Session["Latest"] == "") //hakee automaattisesti 2020 vuodelta, jos foundation timeä ei asetettu
+                if (Session["Earliest"] == "" || Session["Latest"] == "") // Searchs automatically with year 2020, if no timeline chosen
                 {
                     string resultsFromTo = "https://avoindata.prh.fi/tr/v1?totalResults=false&maxResults=1000&companyRegistrationFrom=2020-01-01&companyRegistrationTo=2020-12-31";
                     Session["resultsFromToVar"] = resultsFromTo;
@@ -71,7 +68,7 @@ namespace nettisivut_app
                 StreamReader reader = new StreamReader(dataStream);
                 string responseFromFile = reader.ReadToEnd();
                 Session["responseFromFile"] = responseFromFile;
-                // Session["haettuNimi"] = responseFromFile; //testaa että ohjelma lukee koko sivun
+                // Session["haettuNimi"] = responseFromFile; // Tests if the program reads the whole page
                 string[] words = responseFromFile.Split('}');
 
                 // Check if it contains name without lowercase convert
@@ -82,49 +79,46 @@ namespace nettisivut_app
                 if (firstWay)
                 {
                     int i = 0;
-                    //while (!words[i].Contains("\"name\":\"" + (string)Session["BusinessSector"]) && i < words.Length) //etsii hakusanalla ja tallentaa tiedot arrayhin
                     while (!words[i].Contains("\"name\":\"" + (string)Session["BusinessSector"]) && i < words.Length
                         || !words[i].Contains("\"companyForm\":\"" + (string)Session["CompanyForm"]) && i < words.Length
                         || !words[i].Contains("\"businessId\":\"" + (string)Session["Location"]) && i < words.Length)
                     {
                         i++;
                     }
-                    string[] companyData = words[i].Split(','); //tiedon noutaminen + sanojen splittaus
-                    //Session["CompanyData"] = companyData[2] + " " + companyData[3] + " " + companyData[1] + " " + companyData[4] + " " + companyData[5];
-                    //Session["CompanyData"] = companyData[3];
+                    string[] companyData = words[i].Split(','); // Getting the data and splitting it
 
-                    //name
+                    // Name
                     string haettuNimiRaw = companyData[2];
                     string haettuNimi = haettuNimiRaw.Substring(8);
                     string haettuNimiMinus = haettuNimi.Remove(haettuNimi.Length - 1);
-                    //registry date
+                    // Registry date
                     string haettuRDRaw = companyData[3];
                     string haettuRD = haettuRDRaw.Substring(20);
                     string haettuRDMinus = haettuRD.Remove(haettuRD.Length - 1);
-                    //business id
+                    // Business Id
                     string haettuBIRaw = companyData[1];
                     string haettuBI = haettuBIRaw.Substring(15);
                     string haettuBIMinus = haettuBI.Remove(haettuBI.Length - 1);
-                    //company form
+                    // Company form
                     string haettuFormRaw = companyData[4];
                     string haettuForm = haettuFormRaw.Substring(15);
                     string haettuFormMinus = haettuForm.Remove(haettuForm.Length - 1);
-                    //company details
+                    // Company details
                     string haettuDetailsRaw = companyData[5];
                     string haettuDetails = haettuDetailsRaw.Substring(14);
                     string haettuDetailsMinus = haettuDetails.Remove(haettuDetails.Length - 1);
 
-                    Session["haettuNimi"] = haettuNimiMinus; //tallentaa nimen
-                    Session["haettuRD"] = haettuRDMinus; //tallentaa registration daten
-                    Session["haettuBI"] = haettuBIMinus; //tallentaa business idn
-                    Session["haettuForm"] = haettuFormMinus; //tallentaa company formin
-                    Session["haettuDetails"] = haettuDetailsMinus; //tallentaa companyn details urlin
+                    Session["haettuNimi"] = haettuNimiMinus; // Saves the name
+                    Session["haettuRD"] = haettuRDMinus; // Saves the registry date
+                    Session["haettuBI"] = haettuBIMinus; // Saves the business Id
+                    Session["haettuForm"] = haettuFormMinus; // Saves the company form
+                    Session["haettuDetails"] = haettuDetailsMinus; // Saves the "more details" -url
 
-                    //haun tulokset
-                    Label11.Text = (string)Session["haettuNimi"]; //nimi
-                    Label13.Text = (string)Session["haettuRD"]; //registration time
-                    Label15.Text = (string)Session["haettuBI"]; //business id
-                    Label18.Text = (string)Session["haettuForm"]; //company form
+                    // Search results
+                    Label11.Text = (string)Session["haettuNimi"]; // Name
+                    Label13.Text = (string)Session["haettuRD"]; // Registry date
+                    Label15.Text = (string)Session["haettuBI"]; // Business Id
+                    Label18.Text = (string)Session["haettuForm"]; // Company form
 
             // Result amount calculator
             int tulostenMaara = 0;
@@ -174,49 +168,45 @@ namespace nettisivut_app
             if (secondWay)
             {
                 int i = 0;
-                //while (!words[i].Contains("\"name\":\"" + (string)Session["BusinessSector"]) && i < words.Length) //etsii hakusanalla ja tallentaa tiedot arrayhin
                 while (!words[i].Contains("\"name\":\"" + (string)Session["BusinessSectorCS"]) && i < words.Length
                     || !words[i].Contains("\"companyForm\":\"" + (string)Session["CompanyForm"]) && i < words.Length
                     || !words[i].Contains("\"businessId\":\"" + (string)Session["Location"]) && i < words.Length)
                 {
                     i++;
                 }
-                string[] companyData = words[i].Split(','); //tiedon noutaminen + sanojen splittaus
-                                                            //Session["CompanyData"] = companyData[2] + " " + companyData[3] + " " + companyData[1] + " " + companyData[4] + " " + companyData[5];
-                                                            //Session["CompanyData"] = companyData[3];
+                string[] companyData = words[i].Split(',');
 
-                //name
                 string haettuNimiRaw = companyData[2];
                 string haettuNimi = haettuNimiRaw.Substring(8);
                 string haettuNimiMinus = haettuNimi.Remove(haettuNimi.Length - 1);
-                //registry date
+
                 string haettuRDRaw = companyData[3];
                 string haettuRD = haettuRDRaw.Substring(20);
                 string haettuRDMinus = haettuRD.Remove(haettuRD.Length - 1);
-                //business id
+
                 string haettuBIRaw = companyData[1];
                 string haettuBI = haettuBIRaw.Substring(15);
                 string haettuBIMinus = haettuBI.Remove(haettuBI.Length - 1);
-                //company form
+
                 string haettuFormRaw = companyData[4];
                 string haettuForm = haettuFormRaw.Substring(15);
                 string haettuFormMinus = haettuForm.Remove(haettuForm.Length - 1);
-                //company details
+
                 string haettuDetailsRaw = companyData[5];
                 string haettuDetails = haettuDetailsRaw.Substring(14);
                 string haettuDetailsMinus = haettuDetails.Remove(haettuDetails.Length - 1);
 
-                Session["haettuNimi"] = haettuNimiMinus; //tallentaa nimen
-                Session["haettuRD"] = haettuRDMinus; //tallentaa registration daten
-                Session["haettuBI"] = haettuBIMinus; //tallentaa business idn
-                Session["haettuForm"] = haettuFormMinus; //tallentaa company formin
-                Session["haettuDetails"] = haettuDetailsMinus; //tallentaa companyn details urlin
+                Session["haettuNimi"] = haettuNimiMinus;
+                Session["haettuRD"] = haettuRDMinus;
+                Session["haettuBI"] = haettuBIMinus;
+                Session["haettuForm"] = haettuFormMinus;
+                Session["haettuDetails"] = haettuDetailsMinus;
 
-                //haun tulokset
-                Label11.Text = (string)Session["haettuNimi"]; //nimi
-                Label13.Text = (string)Session["haettuRD"]; //registration time
-                Label15.Text = (string)Session["haettuBI"]; //business id
-                Label18.Text = (string)Session["haettuForm"]; //company form
+                // Search results
+                Label11.Text = (string)Session["haettuNimi"];
+                Label13.Text = (string)Session["haettuRD"];
+                Label15.Text = (string)Session["haettuBI"];
+                Label18.Text = (string)Session["haettuForm"];
 
                 // Result amount calculator
                 int tulostenMaara = 0;
@@ -272,7 +262,7 @@ namespace nettisivut_app
                         Label15.Text = "";
                         Label18.Text = "";
                     }
-            //***hakuohjelma loppuu***
+            // Search program ends here
 
             if (Session["BusinessSector"] == "d1211313dd13")
             {

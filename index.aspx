@@ -12,10 +12,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Company search</title>
-  <link href="awp%20style.css" rel="stylesheet" type="text/css"/>
+  <link href="awp%20style.css" rel="stylesheet" type="text/css" runat="server"/>
+<style type="text/css">
+option:hover {
+background-color:#BD3B70;
+color:yellow;
+}
+</style>
 </head>
 
-<body class="Etusivu">
+<body>
     <form id="form1" runat="server">
   <div class="page">
   <div class="yläosa">
@@ -96,7 +102,21 @@
                   <asp:ListItem Value="11">November</asp:ListItem>
                   <asp:ListItem Value="12">December</asp:ListItem>
                   </asp:DropDownList>
-      <asp:TextBox ID="earliestBox" placeholder="Insert the year..." runat="server" CssClass="searchboxVar space" style="margin-top:12px" OnTextChanged="earliestBox_TextChanged" Width="97px"></asp:TextBox>
+        <asp:DropDownList ID="earliestBox" OnSelectedIndexChanged="earliestBox_TextChanged" runat="server" CssClass="searchboxVar2 space space2" Width="97px">
+                              <asp:ListItem Value="" Text="Year..." style="color:grey"> </asp:ListItem>
+                  <asp:ListItem Value="2013">2013</asp:ListItem>
+                  <asp:ListItem Value="2014">2014</asp:ListItem>
+                  <asp:ListItem Value="2015">2015</asp:ListItem>
+                  <asp:ListItem Value="2016">2016</asp:ListItem>
+                  <asp:ListItem Value="2017">2017</asp:ListItem>
+                  <asp:ListItem Value="2018">2018</asp:ListItem>
+                  <asp:ListItem Value="2019">2019</asp:ListItem>
+                  <asp:ListItem Value="2020">2020</asp:ListItem>
+                  <asp:ListItem Value="2021">2021</asp:ListItem>
+                  <asp:ListItem Value="2022">2022</asp:ListItem>
+                  <asp:ListItem Value="2023">2023</asp:ListItem>
+                  <asp:ListItem Value="2024">2024</asp:ListItem>
+            </asp:DropDownList>
         <br>
 	    <label style="margin-right:10px">Latest:&nbsp;</label>
         <asp:DropDownList ID="theDay2" OnSelectedIndexChanged="theDay2_SelectedIndexChanged" runat="server" CssClass="searchboxVar2 space space2 space3Var" Width="97px">
@@ -148,7 +168,21 @@
                   <asp:ListItem Value="11">November</asp:ListItem>
                   <asp:ListItem Value="12">December</asp:ListItem>
                   </asp:DropDownList>
-    <asp:TextBox ID="latestBox" placeholder="Insert the year..." runat="server" CssClass="searchboxVar space" OnTextChanged="latestBox_TextChanged" Width="97px" style="margin-left:1px;"></asp:TextBox>
+            <asp:DropDownList ID="latestBox" OnSelectedIndexChanged="latestBox_TextChanged" runat="server" CssClass="searchboxVar2 space space2" Width="97px">
+                              <asp:ListItem Value="" Text="Year..." style="color:grey"> </asp:ListItem>
+                  <asp:ListItem Value="2013">2013</asp:ListItem>
+                  <asp:ListItem Value="2014">2014</asp:ListItem>
+                  <asp:ListItem Value="2015">2015</asp:ListItem>
+                  <asp:ListItem Value="2016">2016</asp:ListItem>
+                  <asp:ListItem Value="2017">2017</asp:ListItem>
+                  <asp:ListItem Value="2018">2018</asp:ListItem>
+                  <asp:ListItem Value="2019">2019</asp:ListItem>
+                  <asp:ListItem Value="2020">2020</asp:ListItem>
+                  <asp:ListItem Value="2021">2021</asp:ListItem>
+                  <asp:ListItem Value="2022">2022</asp:ListItem>
+                  <asp:ListItem Value="2023">2023</asp:ListItem>
+                  <asp:ListItem Value="2024">2024</asp:ListItem>
+            </asp:DropDownList>
 <p></p>
     <label>Company form:</label><br />
       <asp:DropDownList ID="companyFormBox" OnSelectedIndexChanged="companyFormBox_SelectedIndexChanged" runat="server" CssClass="searchbox space space2">
@@ -160,7 +194,7 @@
         <p></p>
   <asp:Label ID="errorText1" runat="server" CssClass="errortext" Font-Bold="True"></asp:Label>
 <div>
-    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="SEARCH" CssClass="returnbox2 h3" Font-Bold="True" Width="227px" />
+    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="SEARCH" CssClass="returnbox2 h3" Font-Bold="True" Width="227px" BorderStyle="None" />
 </div>
 </div>
 <div class="väli2">

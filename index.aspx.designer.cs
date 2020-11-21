@@ -66,7 +66,7 @@ namespace nettisivut_app
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox earliestBox;
+        protected global::System.Web.UI.WebControls.DropDownList earliestBox;
 
         /// <summary>
         /// theDay2 control.
@@ -93,7 +93,7 @@ namespace nettisivut_app
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox latestBox;
+        protected global::System.Web.UI.WebControls.DropDownList latestBox;
 
         /// <summary>
         /// companyFormBox control.
