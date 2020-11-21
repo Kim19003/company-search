@@ -13,3 +13,4 @@ Planned upcoming changes:
 Known errors:
 - Company name -search box is case sensitive (fixed partially)
 - Search results counter not working perfectly (fixed partially)
+- Searching with only using "OY" gives an error message
