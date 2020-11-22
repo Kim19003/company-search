@@ -325,7 +325,7 @@ margin-top: 5px;
 }
 
 .dropdown-content {
-    padding-top: 5px;
+    padding-top: 0px;
     display: none;
     position: absolute;
     background-color: #82346A;
