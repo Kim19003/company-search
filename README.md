@@ -13,3 +13,10 @@ Planned upcoming changes:
 Known errors:
 - Company name -search box is case sensitive (fixed partially)
 - Searching with only using "OY" gives an error message
+
+Pictures:
+<p align="left">
+  <img src="https://i.imgur.com/IEeFiih.jpg" width="420" title="Search page"><br>
+  <img src="https://i.imgur.com/vIfmJBF.jpg" width="420" title="Results page"><br>
+  <img src="https://i.imgur.com/Kft2G69.jpg" width="420" title="More details page">
+</p>
