@@ -11,7 +11,7 @@ Planned upcoming changes:
 - ~~Redesign~~ ✔
 
 Known errors:
-- All-time search not working quite yet (under construction 👷🔧)
+- All-time search not working quite yet (under construction 🔧👷)
 - Searching with only using "OY" gives an error message
 
 Pictures:
