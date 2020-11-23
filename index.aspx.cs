@@ -49,6 +49,34 @@ namespace nettisivut_app
             Session["BusinessSector"] = "";
             Session["BusinessSectorCS"] = "";
 
+            // Highlight the current year in the year selection
+            DateTime DateNow = DateTime.Now;
+            int year = DateNow.Year;
+
+            // -> Earliest
+            if (year == 2020)
+            earliestBox.Items[8].Attributes["style"] = "color:white; background-color: #BD3B70"; // If 2020, highlight the year
+            if (year == 2021)
+                earliestBox.Items[9].Attributes["style"] = "color:white; background-color: #BD3B70"; // If 2021, highlight the year
+            if (year == 2022)
+                earliestBox.Items[10].Attributes["style"] = "color:white; background-color: #BD3B70"; // If 2022, highlight the year
+            if (year == 2023)
+                earliestBox.Items[11].Attributes["style"] = "color:white; background-color: #BD3B70"; // If 2023, highlight the year
+            if (year == 2024)
+                earliestBox.Items[12].Attributes["style"] = "color:white; background-color: #BD3B70"; // If 2024, highlight the year
+
+            // -> Latest
+            if (year == 2020)
+                latestBox.Items[8].Attributes["style"] = "color:white; background-color: #BD3B70"; // If 2020, highlight the year
+            if (year == 2021)
+                latestBox.Items[9].Attributes["style"] = "color:white; background-color: #BD3B70"; // If 2021, highlight the year
+            if (year == 2022)
+                latestBox.Items[10].Attributes["style"] = "color:white; background-color: #BD3B70"; // If 2022, highlight the year
+            if (year == 2023)
+                latestBox.Items[11].Attributes["style"] = "color:white; background-color: #BD3B70"; // If 2023, highlight the year
+            if (year == 2024)
+                latestBox.Items[12].Attributes["style"] = "color:white; background-color: #BD3B70"; // If 2024, highlight the year
+
             // If something goes wrong with the search, get an error message.
             if (Session["SearchError"] != null)
             errorText1.Text = (string)Session["SearchError"];
