@@ -48,6 +48,8 @@ namespace nettisivut_app
             Session["haettuWS"] = "";
             Session["BusinessSector"] = "";
             Session["BusinessSectorCS"] = "";
+            Session["BusinessSectorCA"] = "";
+            Session["BusinessSectorUCAP"] = "";
 
             // Highlight the current year in the year selection
             DateTime DateNow = DateTime.Now;
