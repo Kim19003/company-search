@@ -45,7 +45,7 @@
         <asp:TextBox ID="locationBox" placeholder="Insert the business ID..." runat="server" CssClass="searchbox space" OnTextChanged="locationBox_TextChanged" Width="168px"></asp:TextBox>
 	<p></p>
       <label>Foundation time: </label>
-        <label style="color:grey">(2020 if blank)</label><br>
+        <label style="color:grey">(all-time if blank)</label><br>
       <label>Earliest:&nbsp;</label>
         <asp:DropDownList ID="theDay" OnSelectedIndexChanged="theDay_SelectedIndexChanged" runat="server" CssClass="searchboxVar2 space space2 space3" Width="110px">
                   <asp:ListItem Value="" Text="Day..." style="color:grey"> </asp:ListItem>

@@ -76,13 +76,96 @@ namespace nettisivut_app
                 }
                 if (Session["Earliest"] == "" || Session["Latest"] == "") // Searchs automatically with year 2020, if no timeline chosen
                 {
-                    string resultsFromTo = "https://avoindata.prh.fi/tr/v1?totalResults=false&maxResults=1000&companyRegistrationFrom=2020-01-01&companyRegistrationTo=2020-12-31";
+                    bool locationSet = false;
+                    bool formSet = false;
+
+                    // If name is not empty, add it to url
+                    if (!string.IsNullOrEmpty((string)Session["BusinessSector2"])) // If name is not empty, add it to url
+                    {
+                    string resultsFromTo = "https://avoindata.prh.fi/tr/v1?totalResults=false&maxResults=1000&name=" + (string)Session["BusinessSector2"] + "&companyRegistrationFrom=1000-01-01";
                     Session["resultsFromToVar"] = resultsFromTo;
+                    if (!string.IsNullOrEmpty((string)Session["Location"])) // Also if business id is not empty, add it to url
+                        {
+                            resultsFromTo = "https://avoindata.prh.fi/tr/v1?totalResults=false&maxResults=1000&name=" + (string)Session["BusinessSector2"] + "&businessId=" + (string)Session["Location"] + "&companyRegistrationFrom=1000-01-01";
+                            Session["resultsFromToVar"] = resultsFromTo;
+                            locationSet = true;
+                            if (!string.IsNullOrEmpty((string)Session["CompanyForm"])) // Also if company form is not empty, add it to url
+                            {
+                                resultsFromTo = "https://avoindata.prh.fi/tr/v1?totalResults=false&maxResults=1000&name=" + (string)Session["BusinessSector2"] + "&businessId=" + (string)Session["Location"] + "&companyForm=" + (string)Session["CompanyForm"] + "&companyRegistrationFrom=1000-01-01";
+                                Session["resultsFromToVar"] = resultsFromTo;
+                                formSet = true;
+                            }
+                        }
+                    if (!string.IsNullOrEmpty((string)Session["CompanyForm"]) && formSet == false) // Also if company form is not empty, and not already set, add it to url
+                        {
+                            resultsFromTo = "https://avoindata.prh.fi/tr/v1?totalResults=false&maxResults=1000&name=" + (string)Session["BusinessSector2"] + "&companyForm=" + (string)Session["CompanyForm"] + "&companyRegistrationFrom=1000-01-01";
+                            Session["resultsFromToVar"] = resultsFromTo;
+                            formSet = true;
+                            if (!string.IsNullOrEmpty((string)Session["Location"]) && locationSet == false)
+                            {
+                            resultsFromTo = "https://avoindata.prh.fi/tr/v1?totalResults=false&maxResults=1000&name=" + (string)Session["BusinessSector2"] + "&businessId=" + (string)Session["Location"] + "&companyForm=" + (string)Session["CompanyForm"] + "&companyRegistrationFrom=1000-01-01";
+                                Session["resultsFromToVar"] = resultsFromTo;
+                            locationSet = true;
+                            }
+                        }
+                    }
+
+                    // If __ not empty, add it to url
+                    // {
+                    // }
+
+                    else // If all search values are empty, don't change the url at all
+                    {
+                        string resultsFromTo = "https://avoindata.prh.fi/tr/v1?totalResults=false&maxResults=1000&companyRegistrationFrom=1000-01-01";
+                        Session["resultsFromToVar"] = resultsFromTo;
+                    }
                 }
-                else
+                else // If years are selected, add them to the url
                 {
+                    string registrationFromTo = "&companyRegistrationFrom= " + (string)Session["earliestSearcher"] + "&companyRegistrationTo=" + (string)Session["latestSearcher"];
+                    bool locationSet = false;
+                    bool formSet = false;
+
+                    // If name is not empty, add it to url
+                    if (!string.IsNullOrEmpty((string)Session["BusinessSector2"]))
+                    {
+                        string resultsFromTo = "https://avoindata.prh.fi/tr/v1?totalResults=false&maxResults=1000&name=" + (string)Session["BusinessSector2"] + registrationFromTo;
+                        Session["resultsFromToVar"] = resultsFromTo;
+                        if (!string.IsNullOrEmpty((string)Session["Location"])) // Also if business id is not empty, add it to url
+                        {
+                            resultsFromTo = "https://avoindata.prh.fi/tr/v1?totalResults=false&maxResults=1000&name=" + (string)Session["BusinessSector2"] + "&businessId=" + (string)Session["Location"] + registrationFromTo;
+                            Session["resultsFromToVar"] = resultsFromTo;
+                            locationSet = true;
+                            if (!string.IsNullOrEmpty((string)Session["CompanyForm"])) // Also if company form is not empty, add it to url
+                            {
+                                resultsFromTo = "https://avoindata.prh.fi/tr/v1?totalResults=false&maxResults=1000&name=" + (string)Session["BusinessSector2"] + "&businessId=" + (string)Session["Location"] + "&companyForm=" + (string)Session["CompanyForm"] + registrationFromTo;
+                                Session["resultsFromToVar"] = resultsFromTo;
+                                formSet = true;
+                            }
+                        }
+                        if (!string.IsNullOrEmpty((string)Session["CompanyForm"]) && formSet == false) // Also if company form is not empty, and not already set, add it to url
+                        {
+                            resultsFromTo = "https://avoindata.prh.fi/tr/v1?totalResults=false&maxResults=1000&name=" + (string)Session["BusinessSector2"] + "&companyForm=" + (string)Session["CompanyForm"] + registrationFromTo;
+                            Session["resultsFromToVar"] = resultsFromTo;
+                            formSet = true;
+                            if (!string.IsNullOrEmpty((string)Session["Location"]) && locationSet == false)
+                            {
+                                resultsFromTo = "https://avoindata.prh.fi/tr/v1?totalResults=false&maxResults=1000&name=" + (string)Session["BusinessSector2"] + "&businessId=" + (string)Session["Location"] + "&companyForm=" + (string)Session["CompanyForm"] + registrationFromTo;
+                                Session["resultsFromToVar"] = resultsFromTo;
+                                locationSet = true;
+                            }
+                        }
+                    }
+
+                    // If __ not empty, add it to url
+                    // {
+                    // }
+
+                    else
+                    {
                     string resultsFromTo = "https://avoindata.prh.fi/tr/v1?totalResults=false&maxResults=1000&companyRegistrationFrom=" + (string)Session["earliestSearcher"] + "&companyRegistrationTo=" + (string)Session["latestSearcher"];
                     Session["resultsFromToVar"] = resultsFromTo;
+                    }
                 }
 
                 StringWriter writer = new StringWriter();
