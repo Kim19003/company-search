@@ -11,7 +11,6 @@ Planned upcoming changes:
 - ~~Redesign~~ ✔
 
 Known errors:
-- Company name -search box is case sensitive (fixed partially)
 - Searching with only using "OY" gives an error message
 
 Pictures:
