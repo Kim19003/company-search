@@ -15,8 +15,8 @@ namespace nettisivut_app
         public int viisikymmenta = 50;
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
             Session.Timeout = 60;
             Session["SearchError"] = null;
             Session["BusinessSector"] = Session["BusinessSector2"];
@@ -173,13 +173,24 @@ namespace nettisivut_app
                 WebResponse response = myRequest.GetResponse();
                 Stream dataStream = response.GetResponseStream();
                 StreamReader reader = new StreamReader(dataStream);
-                string responseFromFile = reader.ReadToEnd();
-                Session["responseFromFile"] = responseFromFile;
-                // Session["haettuNimi"] = responseFromFile; // Tests if the program reads the whole page
-                string[] words = responseFromFile.Split('}');
+
+            string responseFromFile2 = reader.ReadToEnd();
+            //string responseFromFile = responseFromFile2;
+            string responseFromFile = responseFromFile2.Split('{').Last();
+
+            // Tests if the program reads the whole page correctly
+            /* Session["responseFromFile"] = responseFromFile;
+                if (true)
+            {
+                Session["SearchError"] = responseFromFile;
+                Response.Redirect("index.aspx");
+            } */
+
+            string[] words = responseFromFile.Split('}');
+            //string[] words = responseFromFile.Split(new char[] { '[', ',' }, StringSplitOptions.RemoveEmptyEntries);
 
                 // Check if it contains name without lowercase convert
-                if (responseFromFile.Contains("\"name\":\"" + (string)Session["BusinessSector"])
+            if (responseFromFile.Contains("\"name\":\"" + (string)Session["BusinessSector"])
                    && responseFromFile.Contains("\"companyForm\":\"" + (string)Session["CompanyForm"])
                    && responseFromFile.Contains("\"businessId\":\"" + (string)Session["Location"]))
                     firstWay = true;
@@ -192,30 +203,31 @@ namespace nettisivut_app
                     {
                         i++;
                     }
-                    string[] companyData = words[i].Split(','); // Getting the data and splitting it
+                string[] companyData = words[i].Split(','); // Getting the data and splitting it
+                //string[] companyData = words[i].Split(new char[] { '[', ',' }, StringSplitOptions.RemoveEmptyEntries);
 
-                    // Name
-                    string haettuNimiRaw = companyData[2];
-                    string haettuNimi = haettuNimiRaw.Substring(8);
-                    string haettuNimiMinus = haettuNimi.Remove(haettuNimi.Length - 1);
-                    // Registry date
-                    string haettuRDRaw = companyData[3];
-                    string haettuRD = haettuRDRaw.Substring(20);
-                    string haettuRDMinus = haettuRD.Remove(haettuRD.Length - 1);
-                    // Business Id
-                    string haettuBIRaw = companyData[1];
-                    string haettuBI = haettuBIRaw.Substring(15);
-                    string haettuBIMinus = haettuBI.Remove(haettuBI.Length - 1);
-                    // Company form
-                    string haettuFormRaw = companyData[4];
-                    string haettuForm = haettuFormRaw.Substring(15);
-                    string haettuFormMinus = haettuForm.Remove(haettuForm.Length - 1);
-                    // Company details
-                    string haettuDetailsRaw = companyData[5];
-                    string haettuDetails = haettuDetailsRaw.Substring(14);
-                    string haettuDetailsMinus = haettuDetails.Remove(haettuDetails.Length - 1);
+                // Name
+                string haettuNimiRaw = companyData[1];
+                string haettuNimi = haettuNimiRaw.Substring(8);
+                string haettuNimiMinus = haettuNimi.Remove(haettuNimi.Length - 1);
+                // Registry date
+                string haettuRDRaw = companyData[2];
+                string haettuRD = haettuRDRaw.Substring(20);
+                string haettuRDMinus = haettuRD.Remove(haettuRD.Length - 1);
+                // Business Id
+                string haettuBIRaw = companyData[0];
+                string haettuBI = haettuBIRaw.Substring(15);
+                string haettuBIMinus = haettuBI.Remove(haettuBI.Length - 1);
+                // Company form
+                string haettuFormRaw = companyData[3];
+                string haettuForm = haettuFormRaw.Substring(15);
+                string haettuFormMinus = haettuForm.Remove(haettuForm.Length - 1);
+                // Company details
+                string haettuDetailsRaw = companyData[4];
+                string haettuDetails = haettuDetailsRaw.Substring(14);
+                string haettuDetailsMinus = haettuDetails.Remove(haettuDetails.Length - 1);
 
-                    Session["haettuNimi"] = haettuNimiMinus; // Saves the name
+                Session["haettuNimi"] = haettuNimiMinus; // Saves the name
                     Session["haettuRD"] = haettuRDMinus; // Saves the registry date
                     Session["haettuBI"] = haettuBIMinus; // Saves the business Id
                     Session["haettuForm"] = haettuFormMinus; // Saves the company form
@@ -325,24 +337,26 @@ namespace nettisivut_app
                 {
                     i++;
                 }
-                string[] companyData = words[i].Split(',');
+                string[] companyData = words[i].Split(','); // Getting the data and splitting it
+                //string[] companyData = words[i].Split(new char[] { '[', ',' }, StringSplitOptions.RemoveEmptyEntries);
 
+                // Name
                 string haettuNimiRaw = companyData[2];
                 string haettuNimi = haettuNimiRaw.Substring(8);
                 string haettuNimiMinus = haettuNimi.Remove(haettuNimi.Length - 1);
-
+                // Registry date
                 string haettuRDRaw = companyData[3];
                 string haettuRD = haettuRDRaw.Substring(20);
                 string haettuRDMinus = haettuRD.Remove(haettuRD.Length - 1);
-
+                // Business Id
                 string haettuBIRaw = companyData[1];
                 string haettuBI = haettuBIRaw.Substring(15);
                 string haettuBIMinus = haettuBI.Remove(haettuBI.Length - 1);
-
+                // Company form
                 string haettuFormRaw = companyData[4];
                 string haettuForm = haettuFormRaw.Substring(15);
                 string haettuFormMinus = haettuForm.Remove(haettuForm.Length - 1);
-
+                // Company details
                 string haettuDetailsRaw = companyData[5];
                 string haettuDetails = haettuDetailsRaw.Substring(14);
                 string haettuDetailsMinus = haettuDetails.Remove(haettuDetails.Length - 1);
@@ -456,30 +470,31 @@ namespace nettisivut_app
                     {
                         i++;
                     }
-                    string[] companyData = words[i].Split(','); // Getting the data and splitting it
+                string[] companyData = words[i].Split(','); // Getting the data and splitting it
+                //string[] companyData = words[i].Split(new char[] { '[', ',' }, StringSplitOptions.RemoveEmptyEntries);
 
-                    // Name
-                    string haettuNimiRaw = companyData[2];
-                    string haettuNimi = haettuNimiRaw.Substring(8);
-                    string haettuNimiMinus = haettuNimi.Remove(haettuNimi.Length - 1);
-                    // Registry date
-                    string haettuRDRaw = companyData[3];
-                    string haettuRD = haettuRDRaw.Substring(20);
-                    string haettuRDMinus = haettuRD.Remove(haettuRD.Length - 1);
-                    // Business Id
-                    string haettuBIRaw = companyData[1];
-                    string haettuBI = haettuBIRaw.Substring(15);
-                    string haettuBIMinus = haettuBI.Remove(haettuBI.Length - 1);
-                    // Company form
-                    string haettuFormRaw = companyData[4];
-                    string haettuForm = haettuFormRaw.Substring(15);
-                    string haettuFormMinus = haettuForm.Remove(haettuForm.Length - 1);
-                    // Company details
-                    string haettuDetailsRaw = companyData[5];
-                    string haettuDetails = haettuDetailsRaw.Substring(14);
-                    string haettuDetailsMinus = haettuDetails.Remove(haettuDetails.Length - 1);
+                // Name
+                string haettuNimiRaw = companyData[1];
+                string haettuNimi = haettuNimiRaw.Substring(8);
+                string haettuNimiMinus = haettuNimi.Remove(haettuNimi.Length - 1);
+                // Registry date
+                string haettuRDRaw = companyData[2];
+                string haettuRD = haettuRDRaw.Substring(20);
+                string haettuRDMinus = haettuRD.Remove(haettuRD.Length - 1);
+                // Business Id
+                string haettuBIRaw = companyData[0];
+                string haettuBI = haettuBIRaw.Substring(15);
+                string haettuBIMinus = haettuBI.Remove(haettuBI.Length - 1);
+                // Company form
+                string haettuFormRaw = companyData[3];
+                string haettuForm = haettuFormRaw.Substring(15);
+                string haettuFormMinus = haettuForm.Remove(haettuForm.Length - 1);
+                // Company details
+                string haettuDetailsRaw = companyData[4];
+                string haettuDetails = haettuDetailsRaw.Substring(14);
+                string haettuDetailsMinus = haettuDetails.Remove(haettuDetails.Length - 1);
 
-                    Session["haettuNimi"] = haettuNimiMinus; // Saves the name
+                Session["haettuNimi"] = haettuNimiMinus; // Saves the name
                     Session["haettuRD"] = haettuRDMinus; // Saves the registry date
                     Session["haettuBI"] = haettuBIMinus; // Saves the business Id
                     Session["haettuForm"] = haettuFormMinus; // Saves the company form
@@ -590,28 +605,28 @@ namespace nettisivut_app
                     }
                     string[] companyData = words[i].Split(','); // Getting the data and splitting it
 
-                    // Name
-                    string haettuNimiRaw = companyData[2];
-                    string haettuNimi = haettuNimiRaw.Substring(8);
-                    string haettuNimiMinus = haettuNimi.Remove(haettuNimi.Length - 1);
-                    // Registry date
-                    string haettuRDRaw = companyData[3];
-                    string haettuRD = haettuRDRaw.Substring(20);
-                    string haettuRDMinus = haettuRD.Remove(haettuRD.Length - 1);
-                    // Business Id
-                    string haettuBIRaw = companyData[1];
-                    string haettuBI = haettuBIRaw.Substring(15);
-                    string haettuBIMinus = haettuBI.Remove(haettuBI.Length - 1);
-                    // Company form
-                    string haettuFormRaw = companyData[4];
-                    string haettuForm = haettuFormRaw.Substring(15);
-                    string haettuFormMinus = haettuForm.Remove(haettuForm.Length - 1);
-                    // Company details
-                    string haettuDetailsRaw = companyData[5];
-                    string haettuDetails = haettuDetailsRaw.Substring(14);
-                    string haettuDetailsMinus = haettuDetails.Remove(haettuDetails.Length - 1);
+                // Name
+                string haettuNimiRaw = companyData[1];
+                string haettuNimi = haettuNimiRaw.Substring(8);
+                string haettuNimiMinus = haettuNimi.Remove(haettuNimi.Length - 1);
+                // Registry date
+                string haettuRDRaw = companyData[2];
+                string haettuRD = haettuRDRaw.Substring(20);
+                string haettuRDMinus = haettuRD.Remove(haettuRD.Length - 1);
+                // Business Id
+                string haettuBIRaw = companyData[0];
+                string haettuBI = haettuBIRaw.Substring(15);
+                string haettuBIMinus = haettuBI.Remove(haettuBI.Length - 1);
+                // Company form
+                string haettuFormRaw = companyData[3];
+                string haettuForm = haettuFormRaw.Substring(15);
+                string haettuFormMinus = haettuForm.Remove(haettuForm.Length - 1);
+                // Company details
+                string haettuDetailsRaw = companyData[4];
+                string haettuDetails = haettuDetailsRaw.Substring(14);
+                string haettuDetailsMinus = haettuDetails.Remove(haettuDetails.Length - 1);
 
-                    Session["haettuNimi"] = haettuNimiMinus; // Saves the name
+                Session["haettuNimi"] = haettuNimiMinus; // Saves the name
                     Session["haettuRD"] = haettuRDMinus; // Saves the registry date
                     Session["haettuBI"] = haettuBIMinus; // Saves the business Id
                     Session["haettuForm"] = haettuFormMinus; // Saves the company form
@@ -747,12 +762,12 @@ namespace nettisivut_app
             {
                 Label5.Text = (string)Session["CompanyForm"];
             }
-            }
-            catch (Exception err)
+            //}
+            /* catch (Exception err)
             {
                 Session["SearchError"] = "Error creating web request.";
                 Response.Redirect("index.aspx");
-            }
+            } */
         }  
 
         protected void Button1_Click(object sender, EventArgs e)
