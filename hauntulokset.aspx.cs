@@ -122,7 +122,7 @@ namespace nettisivut_app
                 }
                 else // If years are selected, add them to the url
                 {
-                    string registrationFromTo = "&companyRegistrationFrom= " + (string)Session["earliestSearcher"] + "&companyRegistrationTo=" + (string)Session["latestSearcher"];
+                    string registrationFromTo = "&companyRegistrationFrom=" + (string)Session["earliestSearcher"] + "&companyRegistrationTo=" + (string)Session["latestSearcher"];
                     bool locationSet = false;
                     bool formSet = false;
 
@@ -157,11 +157,11 @@ namespace nettisivut_app
                         }
                     }
 
-                    // If __ not empty, add it to url
-                    // {
-                    // }
+                // If __ not empty, add it to url
+                // {
+                // }
 
-                    else
+                else
                     {
                     string resultsFromTo = "https://avoindata.prh.fi/tr/v1?totalResults=false&maxResults=1000&companyRegistrationFrom=" + (string)Session["earliestSearcher"] + "&companyRegistrationTo=" + (string)Session["latestSearcher"];
                     Session["resultsFromToVar"] = resultsFromTo;
@@ -765,7 +765,7 @@ namespace nettisivut_app
             //}
             /* catch (Exception err)
             {
-                Session["SearchError"] = "Error creating web request.";
+                Session["SearchError"] = "Error creating web request or invalid search query.";
                 Response.Redirect("index.aspx");
             } */
         }  
