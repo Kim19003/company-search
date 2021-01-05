@@ -8,10 +8,10 @@ Planned upcoming changes:
 - ~~Better error handling and more reasonable error messages~~ ✔
 - ~~Removal of all the unnecessary stuff~~ ✔
 - ~~Redesign~~ ✔
+- All time search(?)
 
 Known errors:
-- All-time search not working quite yet (under construction)
-- Searching with only using "OY" gives an error message
+- Searching with only using the "Company form: OY" gives an error
 
 Pictures:
 <p align="left">
